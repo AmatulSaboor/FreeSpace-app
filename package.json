@@ -4,6 +4,7 @@
   "description": "A software to connect travelers with free space to people looking to send stuff",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
