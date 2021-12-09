@@ -37,8 +37,8 @@ app.use(session({
     saveUninitialized: false,
     store: store,
 }));
-
-app.use(cors({origin: 'http://localhost:3006', credentials:true}));
+// http://localhost:3006
+app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use('/carrier', carrierRouter);
