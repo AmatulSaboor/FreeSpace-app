@@ -19,9 +19,14 @@ router.post('/search', async (req, res) => {
     console.log(`inside sender search`)
     console.log(req.body)
     const params = {};
-    params["weight"] = {$gte:req.body.weight};
+    if(req.body.weight) params["weight"] = {$gte:req.body.weight};
+    if(req.body.expiresOn) params["expiresOn"] = {$gte:req.body.expiresOn};
+    if(req.body.originCity) params["originCity"] = req.body.originCity;
+    if(req.body.destinationCity) params["destinationCity"] = req.body.destinationCity;
+    console.log(params);
     // ,$cond: [ req.body.expiresOn !== null, {expiresOn: req.body.expiresOn}, ]
-    // res.send(JSON.stringify({filteredPosts : await SenderPost.find({weight: {$gte:req.body.weight}})}));
+    // if(req.body.weight)  res.send(JSON.stringify({filteredPosts : await SenderPost.find({weight: {$gte:req.body.weight}})}));
+    // if(req.body.expiresOn)  res.send(JSON.stringify({filteredPosts : await SenderPost.find({expiresOn:{$gte: req.body.expiresOn}})}));
     res.send(JSON.stringify({filteredPosts : await SenderPost.find(params)}));
 })
 
