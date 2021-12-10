@@ -37,7 +37,11 @@ app.use(session({
     saveUninitialized: false,
     store: store,
 }));
+<<<<<<< HEAD
 //app.use(cors({origin : 'http://localhost:3000', credentials:true}));
+=======
+// app.use(cors({origin : 'http://localhost:3000', credentials:true}));
+>>>>>>> 13d382656754facefa973d021f1eec424ddd02fe
 app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());

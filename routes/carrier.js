@@ -8,10 +8,12 @@ router.get('/', (req, res) => {
 })
 
 router.get('/getListing', async (req, res) => {
+    console.log('inside carrier get listing');
     res.send(JSON.stringify({carrierPostList : await CarrierPost.find({createdBy: req.session.user.username})}));
 })
 
 router.get('/getAllListing', async (req, res) => {
+    console.log('inside carrier get all listing');
     res.send(JSON.stringify({carrierPostList : await CarrierPost.find({})}));
 })
 
