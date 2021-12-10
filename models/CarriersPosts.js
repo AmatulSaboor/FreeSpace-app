@@ -8,7 +8,7 @@ const CarrierPostSchema = new Schema(
         },
         dapartureDate: {
             type: Date,
-            required: [true, 'departure date is required']
+            //required: [true, 'departure date is required']
         },
         arrivalDate: {
             type: Date,
