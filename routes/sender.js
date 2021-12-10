@@ -40,8 +40,25 @@ router.post('/create', async (req, res) => {
 router.post('/update', async (req, res) => {
     console.log(`inside update`)
     console.log(req.body);
-    const editedSenderPost = await SenderPost.findByIdAndUpdate({_id: req.body._id}, {$set: {originCountry: req.body.originCountry, originCity: req.body.originCity}});
-    res.send(JSON.stringify({editedSenderPost}));
+    // SenderPost.findByIdAndUpdate(req.body._id, {$set: {'weight':req.body.weight, 'vloume':req.body.volume}}, (err, result) => {
+    //     if (err) throw err;
+    //     console.log('just to check')
+    //     console.log(result)
+    //     res.send(JSON.stringify({editedSenderPost: 'dont know yet'}));
+    // });
+    const modifiedSenderPost = await SenderPost.findByIdAndUpdate(req.body._id, {$set: {
+        'originCountry' : req.body.originCountry,
+        'originCity' : req.body.originCity,
+        'destinationCity' : req.body.destinationCity,
+        'destinationCountry' : req.body.destinationCountry,
+        'expiresOn' : req.body.expiresOn,
+        'weight' : req.body.weight,
+        'volume' : req.body.volume,
+        'willingToPayPerKg' : req.body.willingToPayPerKg,
+        'items' : req.body.items,
+        'comments' : req.body.comments}});
+        console.log(modifiedSenderPost)
+    res.send(JSON.stringify({editedSenderPost:req.body}));
 })
 
 router.get('/delete/:id', async (req, res) => {
