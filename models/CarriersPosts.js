@@ -6,7 +6,7 @@ const CarrierPostSchema = new Schema(
         createdBy: {
             type: String,
         },
-        dapartureDate: {
+        departureDate: {
             type: Date,
             required: [true, 'departure date is required']
         },
@@ -39,7 +39,7 @@ const CarrierPostSchema = new Schema(
             required: [true, 'volume is required']
         },
         ratesPerKg: {
-            type: Number,
+            type: String,
             required: [true, 'willing to pay is required']
         },
         comments: {

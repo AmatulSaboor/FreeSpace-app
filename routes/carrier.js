@@ -17,7 +17,21 @@ router.get('/getAllListing', async (req, res) => {
     res.send(JSON.stringify({carrierPostList : await CarrierPost.find({})}));
 })
 
+router.post('/search', async (req, res) => {
+    console.log(`inside carrier search`)
+    console.log(req.body)
+    const params = {};
+    if(req.body.weight) params["weight"] = {$gte:req.body.weight};
+    if(req.body.departureDate) params["departureDate"] = {$gte:req.body.departureDate};
+    if(req.body.arrivalDate) params["arrivalDate"] = {$lte:req.body.arrivalDate};
+    if(req.body.departureCity) params["departureCity"] = req.body.departureCity;
+    if(req.body.arrivalCity) params["arrivalCity"] = req.body.arrivalCity;
+    console.log(params);
+    res.send(JSON.stringify({filteredPosts : await CarrierPost.find(params)}));
+})
+
 router.post('/create', async (req, res) => {
+    console.log(req.body)
     req.body.createdBy = req.session.user.username;
     newCarrierPost = new CarrierPost(req.body);
     const carrierPost = await newCarrierPost.save();

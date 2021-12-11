@@ -18,10 +18,18 @@ const UserSchema = new Schema(
       lowercase: true,
       validate: [isEmail, 'Please enter a valid email address'],
     },
+    phone: {
+      type: String,
+      required: [true, 'Phone number is required'],
+    },
     password: {
       type: String,
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be 6 or more characters'],
+    },
+    confirmPassword: {
+      type: String,
+      required: [true, 'Confirm password is required'],
     },
   },
   {
