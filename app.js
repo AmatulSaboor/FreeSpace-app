@@ -80,7 +80,8 @@ app.get('/checkOnline/:username', (req, res) => {
 })
 // =============================================== checks authentication ====================================
 app.get('/session', (req, res) => {
-    // console.log(req.session)
+    console.log(`I am inisde session`)
+    console.log(req.session)
     if (req.session.isAuthenticated)
         res.send(JSON.stringify({isAuthenticated: true, error: null, username: req.session.user.username, email:req.session.user.email}));
     else
