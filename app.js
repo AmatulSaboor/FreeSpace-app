@@ -82,7 +82,7 @@ app.get('/checkOnline/:username', (req, res) => {
 app.get('/session', (req, res) => {
     // console.log(req.session)
     if (req.session.isAuthenticated)
-        res.send(JSON.stringify({isAuthenticated: true, error: null}));
+        res.send(JSON.stringify({isAuthenticated: true, error: null, username: req.session.user.username, email:req.session.user.email}));
     else
         res.send(JSON.stringify({isAuthenticated: false, error: 'Some Error Occured, Try Again!!!'}));
 })
@@ -100,6 +100,7 @@ app.post('/login', (req, res) => {
                 if(isValidPassword){
                     req.session.isAuthenticated = true;
                     req.body.password = await bcrypt.hash(req.body.password, 10);
+                    req.body.email = result.email;
                     req.session.user = req.body;
                     res.send(JSON.stringify({message: 'Welcome ' + req.body.username, username: req.body.username, email:result.email}));
                 }
