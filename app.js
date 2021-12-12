@@ -40,17 +40,16 @@ app.use(session({
 }
 
 ));
-// app.use(cookieParser());
-// app.use((req, res, next)=>{
-//     console.log(`inside cookie parser`)
-//     // req.session.cookie.sameSite = 'none'
-//     // req.session.cookie.secure = true
-//     console.log(req.session)
-//     // req.cookies['connect.sid'].sameSite = 'none'
-//     // req.cookies['connect.sid'].secure = true;
-//     // res.cookie('connect.sid', req.session.id, { sameSite: 'none', secure: true });
-//     next();
-// })
+app.use(cookieParser());
+app.use((req, res, next)=>{
+    console.log(`inside cookie parser`)
+    console.log(req.session)
+    if(req.cookies['connect.sid']){
+        req.cookies['connect.sid'].sameSite = 'none'
+        req.cookies['connect.sid'].secure = true;
+    }
+    next();
+})
 // app.use(cors({origin : 'http://localhost:3000', credentials:true}));
 app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
 app.use(express.urlencoded({extended:true}));
