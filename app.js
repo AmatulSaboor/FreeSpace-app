@@ -37,25 +37,26 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: store,
-    cookie: {
-        maxAge: 24 * 60 * 60 * 1000,
-        httpOnly: true, 
-        secure: true,
-        sameSite: 'none',
-        }
+//     cookie: {
+//         maxAge: 24 * 60 * 60 * 1000,
+//         httpOnly: true, 
+//         secure: true,
+//         sameSite: 'none',
+//         }
     }
 ));
 app.use(cookieParser());
-// app.use(
-//     cookieSession({
-//       name: "__session",
-//       keys: ["key1"],
-//       maxAge: 24 * 60 * 60 * 100,
-//       secure: true,
-//       httpOnly: true,
-//       sameSite: 'none'
-//     })
-// );
+app.set('trust proxy', 1)
+app.use(
+    cookieSession({
+      name: "__session",
+      keys: ["key1"],
+      maxAge: 24 * 60 * 60 * 100,
+      secure: true,
+      httpOnly: true,
+      sameSite: 'none'
+    })
+);
 // app.use((req, res, next)=>{
 //     console.log(`inside cookie middleware`)
 //     console.log(req.session.cookies)
