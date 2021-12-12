@@ -17,7 +17,7 @@ const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 const cookieParser = require('cookie-parser');
-
+const cookieSession = require("cookie-session");
 // connection to DB
 mongoose.connect(uri).then((result)=>{
     console.log('connected to Mongo DB Atlas');
@@ -37,19 +37,34 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: store,
-}
-
-));
-app.use(cookieParser());
-app.use((req, res, next)=>{
-    console.log(`inside cookie parser`)
-    console.log(req.session)
-    if(req.cookies['connect.sid']){
-        req.cookies['connect.sid'].sameSite = 'none'
-        req.cookies['connect.sid'].secure = true;
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true, 
+        secure: false,
+        SameSite: 'strict',
+        }
     }
-    next();
-})
+));
+// app.use(cookieParser());
+// app.use(
+//     cookieSession({
+//       name: "__session",
+//       keys: ["key1"],
+//         maxAge: 24 * 60 * 60 * 100,
+//         secure: true,
+//         httpOnly: true,
+//         sameSite: 'none'
+//     })
+// );
+// app.use((req, res, next)=>{
+//     console.log(`inside cookie middleware`)
+//     console.log(req.session.cookies)
+//     if(req.cookies['connect.sid']){
+//         console.log(req.cookies['connect.sid'])
+//         res.cookie('connect.sid', ['connect.sid'], { sameSite: 'none', secure: true });
+//     }
+//     next();
+// })
 // app.use(cors({origin : 'http://localhost:3000', credentials:true}));
 app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
 app.use(express.urlencoded({extended:true}));
