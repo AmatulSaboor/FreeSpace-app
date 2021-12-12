@@ -16,6 +16,7 @@ const User = require('./models/Users');
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+const cookieParser = require('cookie-parser');
 
 // connection to DB
 mongoose.connect(uri).then((result)=>{
@@ -37,6 +38,10 @@ app.use(session({
     saveUninitialized: false,
     store: store,
 }));
+app.use(cookieParser());
+app.use((req, res)=>{
+    res.cookie('cookie', req.cookie, { sameSite: 'none', secure: true });
+})
 // app.use(cors({origin : 'http://localhost:3000', credentials:true}));
 app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
 app.use(express.urlencoded({extended:true}));
@@ -80,7 +85,8 @@ app.get('/checkOnline/:username', (req, res) => {
 })
 // =============================================== checks authentication ====================================
 app.get('/session', (req, res) => {
-    // console.log(req.session)
+    console.log(`i am inside session`)
+    console.log(req.session)
     if (req.session.isAuthenticated)
         res.send(JSON.stringify({isAuthenticated: true, error: null, username: req.session.user.username, email:req.session.user.email}));
     else
