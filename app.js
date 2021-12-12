@@ -64,7 +64,9 @@ app.use(cookieParser());
 //     next();
 // })
 // app.use(cors({origin : 'http://localhost:3000', credentials:true}));
-app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
+app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true,
+  allowedHeaders: ["Content-Type","Authorization","X-Requested-With","X-Forwarded-Proto", "Cookie","Set-Cookie"],
+  exposedHeaders: ["Content-Type","Authorization","X-Requested-With","X-Forwarded-Proto","Cookie","Set-Cookie"]}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use('/carrier', carrierRouter);
