@@ -7,8 +7,6 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
 const port = process.env.PORT || 9000;
 const http = require('http').Server(app);
-const { Server } = require('socket.io');
-const io = new Server(http);
 const carrierRouter = require('./routes/carrier');
 const senderRouter = require('./routes/sender');
 const uri = "mongodb+srv://FS-developers:Password123@cluster0.vzs9g.mongodb.net/FreeSpace?retryWrites=true&w=majority";
@@ -75,7 +73,6 @@ app.use('/sender', senderRouter);
 
 app.get('/', (req, res) => {
     console.log('I am here');
-    // console.log(req.session);
     res.send(JSON.stringify('hello world'));
 })
 
@@ -152,11 +149,11 @@ app.post('/register', async (req, res) => {
     console.log('inside register post')
     let newUser = await User.findOne({email: req.body.email});
     if (newUser){
-      return res.send(JSON.stringify({error: 'You already have an account (email), sign in now!', username: newUser.username}));
+      return res.send(JSON.stringify({error: 'You already have this email address, sign in now!', username: newUser.username}));
     }
     newUser = await User.findOne({username: req.body.username});
     if (newUser){
-      return res.send(JSON.stringify({error: 'You already have an account (username), sign in now!', username: newUser.username}));
+      return res.send(JSON.stringify({error: 'You already have this username, sign in now!', username: newUser.username}));
     }
     try{
       req.body.password = await bcrypt.hash(req.body.password, 10);
@@ -168,7 +165,6 @@ app.post('/register', async (req, res) => {
       res.send(JSON.stringify({message: req.body.username + ' is successfully registered', username: req.body.username, email:req.body.email}));
     }catch(e){
       if (e.message.indexOf('validation failed') !== -1) {
-        // e = Object.values(e.errors).reduce((a, i)=> a+'<br>'+i);
         e = Object.values(e.errors)[0].message
       }
       return res.send(JSON.stringify({error: e, username: req.body.username, email:req.body.email}));
@@ -186,44 +182,5 @@ app.get('/logout', (req, res) =>
     });
 });
 
-// ============================================ WEBSOCKETS ====================================
-
-// io.on('connection', socket =>
-// {
-//     const socketId = socket.id;
-//     if(socket.handshake.headers.cookie){
-//         const sessionId = socket.handshake.headers.cookie.slice(16, 48)
-//         client.connect((err) => {
-//             if (err)
-//             throw err;
-//             const mySessions = client.db('FreeSpace').collection('mySessions');
-//             mySessions.findOneAndUpdate({_id:sessionId},  {$set: {'session.user.socketId':socketId}}, (err, data) => {
-//                 if (err) throw err;
-//                 // console.log(data)
-//             })
-//         })
-//     }
-//     else{
-//         socket.disconnect();
-//         console.log(socket);
-//         return;
-//     }
-//     socket.send(`hi world`);
-//     console.log(`${socket.id} is online`);
-//     socket.on('msg', msg =>
-//     {
-//         console.log(msg);
-//         console.log(`inside message listener`)
-//         io.emit('msg', {message:`hello my client ${socketId}`})
-//     });
-//     socket.on('sendMessage', msg =>
-//     {
-//         console.log(`sender ID : ${socket.id}`);
-//         console.log(`reciever ID : ${msg.postOwnerSocketId}`);
-//         console.log(`inside message listener`)
-//         io.to(msg.postOwnerSocketId).emit("recieveMessage", {msgSenderSocketId:socket.id , message:msg.message});
-//         console.log(`after sent messsage`)
-//     });
-// });
 
 http.listen(port, () => {`Example app listening on port ${port}`});

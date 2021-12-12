@@ -19,7 +19,7 @@ router.post('/search', async (req, res) => {
     console.log(`inside sender search`)
     console.log(req.body)
     const params = {};
-    if(req.body.weight) params["weight"] = {$lte:req.body.weight};
+    if(req.body.weight) params["weight"] = {$gte:req.body.weight};
     if(req.body.expiresOn) params["expiresOn"] = {$lte:req.body.expiresOn};
     if(req.body.originCity) params["originCity"] = req.body.originCity;
     if(req.body.destinationCity) params["destinationCity"] = req.body.destinationCity;

@@ -41,7 +41,6 @@ const SenderPostSchema = new Schema(
     },
     items: {
         type: String,
-        required: [true, 'items are required']
     },
     comments: {
         type: String,
