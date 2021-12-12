@@ -40,20 +40,20 @@ app.use(session({
     cookie: {
         maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true, 
-        secure: false,
-        SameSite: 'strict',
+        secure: true,
+        sameSite: 'none',
         }
     }
 ));
-// app.use(cookieParser());
+app.use(cookieParser());
 // app.use(
 //     cookieSession({
 //       name: "__session",
 //       keys: ["key1"],
-//         maxAge: 24 * 60 * 60 * 100,
-//         secure: true,
-//         httpOnly: true,
-//         sameSite: 'none'
+//       maxAge: 24 * 60 * 60 * 100,
+//       secure: true,
+//       httpOnly: true,
+//       sameSite: 'none'
 //     })
 // );
 // app.use((req, res, next)=>{
