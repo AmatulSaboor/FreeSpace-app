@@ -6,7 +6,6 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const uri = "mongodb+srv://FS-developers:Password123@cluster0.vzs9g.mongodb.net/FreeSpace?retryWrites=true&w=majority";
-const User = require('./models/Users');
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
