@@ -73,7 +73,7 @@ app.use('/carrier', carrierRouter);
 app.use('/sender', senderRouter);
 app.use('/auth', authRouter);
 
-app.use(express.static(path.join(__dirname, "/FreeSpace-client/public/build")));
+app.use(express.static(path.join(__dirname, "/FreeSpace-client/build/public")));
 app.get('*', (req, res) => {
     console.log(`inside * path`)
   res.sendFile(path.join(__dirname, '/FreeSpace-client/build', 'index.html'));
