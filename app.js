@@ -64,13 +64,17 @@ app.use(cookieParser());
 //     next();
 // })
 // app.use(cors({origin : 'http://localhost:3000', credentials:true}));
-app.use(cors({origin: 'https://freespace-app.herokuapp.com', credentials:true}));
+app.use(cors({origin: 'https://freespace-travelers.herokuapp.com/', credentials:true}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use('/carrier', carrierRouter);
 app.use('/sender', senderRouter);
 
+app.use(express.static(path.join(__dirname, "/FreeSpace-client/build")));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/FreeSpace-client/build', 'index.html'));
+});
 app.get('/', (req, res) => {
     console.log('I am here');
     res.send(JSON.stringify('hello world'));

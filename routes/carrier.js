@@ -57,7 +57,6 @@ router.post('/update', async (req, res) => {
         res.send(JSON.stringify({editedCarrierPost}));}
     catch(e){
         if (e.message.indexOf('validation failed') !== -1) {
-            // e = Object.values(e.errors).reduce((a, i)=> a+'<br>'+i);
             e = Object.values(e.errors)[0].message
         }
     }
