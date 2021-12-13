@@ -1,0 +1,46 @@
+.menubar{
+    display: flex;
+    flex-direction: row;
+    
+    padding-top:1%;
+    /* padding-bottom: 6px; */
+    border-bottom: 1px solid #f0b032;
+
+  }
+  .free {
+    width: 30%;
+}
+
+.logo {
+    /* width: 25%; */
+    padding: 2px;
+    height: 100px;
+    width: 180px;
+}
+.nav .linkto{
+    width: 50%;
+}
+
+li.icon {
+    list-style: none;
+    display: inline-block;
+}
+.icon img{height:30px;width:30px; margin: 3px;}
+/* li.icon {
+    padding: 5px 35px;
+} */
+.icon{/* PADDING: 2PX 5PX; */
+    
+        /* PADDING: 2PX 5PX; */
+        height: 57px;
+        border-radius: 60%;
+        border: 2PX SOLID #f0b032;
+        PADDING: PX;
+        TEXT-ALIGN: CENTER;
+        JUSTIFY-CONTENT: CENTER;
+        /* MARGIN: 2PX 5PX 10PX 20PX; */
+        /* background-color: beige; */
+        PADDING: 10PX 10PX 10PX 10PX;
+        MARGIN: 2PX 20PX 10PX 35PX;
+        /* MARGIN-TOP: 20PX; */
+    }

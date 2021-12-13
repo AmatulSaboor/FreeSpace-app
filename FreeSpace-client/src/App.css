@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.mandatory{
+  color:red;
+}
+.bold{
+  font-weight: bold;
+}
+.italic{
+  font-style: italic;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+a:hover {
+  color: #F0B032;
+  border: 2px solid #F0B032;
+  background: #fff;
+  text-decoration: none
+}
+button.Search.btn.btn-primary {
+  float: left;
+  float: left;
+  margin-top: 10px;
+  width: 60px;
+  height: 30px;
+  margin-bottom: 10px;
+  background: #f0b032;
+  float: none;
+}
+button.number-listing {
+  font-size: 12px;
+  background-color: #f0b302;
+ 
+  color: #fff;
+  border: 1px solid #fff;
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.mb-3 nav nav-tabs:active{
+  background-color: #f0b302;
+  color: #fff;
+}
+ul.Navigation {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+

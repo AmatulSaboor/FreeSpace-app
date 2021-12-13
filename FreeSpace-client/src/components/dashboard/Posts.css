@@ -1,0 +1,232 @@
+span.filter-heading {
+    float: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #F0B032;
+    
+}
+form.form-post {
+    margin-left: 200px;
+    /* margin-top: 20px; */
+}
+.colum-o1 {
+    border: 2px solid #D3D3D3;
+    border-radius: 2%;
+    margin-top: 20px;
+}
+
+.colum-o1 {
+    border: 2px solid #D3D3D3;
+    border-radius: 1%;
+    margin-top: 8px;
+    max-width: 91%;
+    text-align: center;
+    align-items: canter;
+    margin-left: 67px;
+}
+.filter-mode {
+    display: inline;
+}
+.filter-column {
+    margin-top: 20px;
+    margin-right: 46px;
+}
+label.form-label {
+    font-size: 16px;
+    margin-right: 10px;
+    font-weight: 400;
+}
+label.form-label {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+label.cityandcountry.form-label {
+    margin-left: 40px;
+}
+
+
+.filter-mode {
+    margin-left: 5px;
+    
+}
+input.input-form {
+    font-weight: 200;
+    font-size: 12px;
+    border: 1px solid;
+    margin-right: 5px ;
+}
+.colum-2 {
+    /* display: inline; */
+    /* display: flex; */
+    max-width: 100%;
+}
+.city-carrier {
+    display: flex;
+}
+label.cityandcountry.form-label {
+    margin-left: 35px;
+}
+select {
+    font-size: 12px;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+.arrival-post {
+    MARGIN-LEFT: 5PX;
+}
+
+button.reset.btn.btn-dark {
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+   
+    background: #f0b032;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+button.Search.btn.btn-primary{
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    
+    margin-bottom: 10px;
+   
+    background: #f0b032;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.departure{
+    FONT-SIZE: 12PX;
+    BORDER: 1PX SOLID;
+    MARGIN-RIGHT: 2PX;
+    MARGIN-LEFT: 5PX;
+}
+.section-02 {
+    margin-left: 200px;
+    margin-right: 100px;
+}
+.sort-by {
+    margin: 2px;
+    margin-top: 10px;
+   
+    padding-left: 1px;
+    margin-left: 92px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+span.sort-by-heading {
+    color: #000;
+    /* margin-top: 5px; */
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
+    
+    margin-left: 220px
+}
+button.sortSelection {
+    HEIGHT: 20PX;
+    margin-left: 15px;
+    border: 1px solid;
+    margin-top: 5px;
+}
+p.heading-recently-sort-by.card-text {
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f0b302;
+    margin-left: 220px;
+}
+.heading-carrier {
+    margin-top: 13px;
+    font-size: 20px;
+    color: #f0b302;
+    font-weight: 600;
+}
+button.sortSelection {
+    width: 14%;
+    height: 31px;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 12px;
+    
+    border: 1px solid #f0b302;
+    background: white;
+    border-radius: 9%;
+}
+.card-group {
+    display: flex;
+    flex-flow: nowrap ;
+    margin-left: 220px;
+    /* width: 20%; */
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+   
+    background-clip: border-box;
+    
+    border-radius: 0.25rem;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.card-title.h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+span.date {
+    color: #f0b302;
+}
+.card-body {
+    margin-top: 5px;
+}
+p.card-text {
+    line-height: 22px;
+}
+.space {
+   
+    /* border: 2px solid #f0b302; */
+    border-radius: 2%;
+}
+button.btn.btn-primary {
+    margin-top: 10px;
+}
+.card-footer {
+    padding: 0.5rem 1rem;
+    background-color: none;
+    border-top: 1px solid #f0b302;
+}
+button.btn.btn-primary {
+    margin-top: 10px;
+    width: 64px;
+    height: 36px;
+    font-size: 12px;
+    
+    background: #F0B032;border: 1px solid #fff;
+}
+button.livechat.btn.btn-secondary{ margin-top: 10px;
+    width: 64px;
+    height: 36px;
+    font-size: 12px;
+    
+    background: #F0B032;border: 1px solid #fff;}
+    .card-body {
+        background: #fff;
+    }
+    select.select-form {
+        font-size: 12px;
+        width: 50%;
+    }
+    input.select-form.form-control {
+        width: 50%;
+        display: inline;
+    }
