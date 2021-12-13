@@ -6,7 +6,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 const http = require('http').Server(app);
 const carrierRouter = require('./routes/carrier');
 const senderRouter = require('./routes/sender');
@@ -73,7 +73,7 @@ app.use('/carrier', carrierRouter);
 app.use('/sender', senderRouter);
 app.use('/auth', authRouter);
 
-app.use(express.static(path.join(__dirname, "/FreeSpace-client/build")));
+app.use(express.static(path.join(__dirname, "/FreeSpace-client/public/build")));
 app.get('*', (req, res) => {
     console.log(`inside * path`)
   res.sendFile(path.join(__dirname, '/FreeSpace-client/build', 'index.html'));
