@@ -75,6 +75,7 @@ app.use('/auth', authRouter);
 
 app.use(express.static(path.join(__dirname, "/FreeSpace-client/build")));
 app.get('*', (req, res) => {
+    console.log(`inside * path`)
   res.sendFile(path.join(__dirname, '/FreeSpace-client/build', 'index.html'));
 });
 app.get('/', (req, res) => {
