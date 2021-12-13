@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/Users');
 console.log(`inside server`)
-const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const MongoDBStore = require('connect-mongodb-session')(session);
