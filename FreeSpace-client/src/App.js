@@ -14,7 +14,7 @@ import { Notification } from './components/notification/Notification';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
-  const [error, setError] = useState(null)
+  const [error] = useState(null)
   const [loggedInUserName, setLoggedInUserName] = useState(null)
   const [loggedInUserEmail, setLoggedInUserEmail] = useState(null)
 

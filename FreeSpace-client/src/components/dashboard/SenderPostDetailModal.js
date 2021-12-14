@@ -58,6 +58,7 @@ export default function DetailModal({post}) {
                             .catch(err => console.log(err));
                         }
                     }>Interested</Button>
+                    <Card.Text>If you click INTERESTED button, a notification will be sent to the post owner with your email and phone number</Card.Text>
                     <Button className='close' onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
