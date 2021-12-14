@@ -2,10 +2,10 @@ const { Router } = require('express');
 const router = Router();
 const SenderPost = require('../models/SendersPosts');
 
-router.get('/', (req, res) => {
-    console.log(`${req.body} inside get sender`);
-    res.send('hello sender get');
-})
+// router.get('/', (req, res) => {
+//     console.log(`${req.body} inside get sender`);
+//     res.send('hello sender get');
+// })
 
 router.get('/getListing', async (req, res) => {
     res.send(JSON.stringify({senderPostList : await SenderPost.find({createdBy: req.session.user.username})}));

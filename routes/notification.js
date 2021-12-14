@@ -5,10 +5,10 @@ const User = require('../models/Users');
 const SenderPost = require('../models/SendersPosts');
 const CarrierPost = require('../models/CarriersPosts');
 
-router.get('/', (req, res) => {
-    console.log('inside get notification');
-    res.send('hello notification get');
-})
+// router.get('/', (req, res) => {
+//     console.log('inside get notification');
+//     res.send('hello notification get');
+// })
 
 router.get('/getListing', async (req, res) => {
     const NotificationList = await Notification.find({recieverName: req.session.user.username});

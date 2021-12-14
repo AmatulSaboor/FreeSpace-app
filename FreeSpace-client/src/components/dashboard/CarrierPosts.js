@@ -52,7 +52,7 @@ export const CarrierPosts = ({socket, carrierPosts, currentPostsCarrier, setCarr
     // handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(serverURL + "auth/carrier/search",
+        fetch(serverURL + "carrier/search",
         {
             mode: 'cors',
             method: 'POST',

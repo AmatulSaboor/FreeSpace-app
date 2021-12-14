@@ -68,24 +68,24 @@ export const Register = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                 .catch(err => console.log(err));}
             }}>
                 <div className="flex-container">
-                <div className="left-column">
-                <img className="bg-img" src={image} alt="bgImage" />   
-                </div>
+                    <div className="left-column">
+                        <img className="bg-img" src={image} alt="bgImage" />   
+                    </div>
                 <div className="right-column">
-                <img className="logo" src={logo} alt="Logo" />
-                <h5 className="slagon">Skip the stress.<span className="slagon-part-2">Ship your luggage.</span> </h5>
-                
-                {validationError && <div className='validationError m-4'>{validationError}</div>}
-                <input className="field" type="text" name="username" placeholder="Username" required onChange={e => setUsername(e.target.value)} />
-                <input className="field" type="email" name="email" placeholder="Email" required onChange={e => setEmail(e.target.value)} />
-                <input className="field" type="text" name="phone" placeholder="Phone number" required onChange={e => setPhone(e.target.value)} />
-                <input className="field" type="password" name="password" placeholder="Password" required onChange={e => setPassword(e.target.value)} />
-                <input className="field" type="password" name="confirmPassword" placeholder="Confirm password" required onChange={e => setConfirmPassword(e.target.value)} />
-                <br></br>
-                <div><span className='allfield'>Note:All fields are mandatory</span></div>
-                <button className="button" type="submit">Register</button>
-                <p className="text">Already have an account??<Link className="login" to = "/login">Login Now</Link></p>
-                </div></div>
+                    <img className="logo" src={logo} alt="Logo" />
+                    <h5 className="slagon">Skip the stress.<span className="slagon-part-2">Ship your luggage.</span> </h5>
+                    {validationError && <div className='validationError m-4'>{validationError}</div>}
+                    <input className="field" type="text" name="username" placeholder="Username" required onChange={e => setUsername(e.target.value)} />
+                    <input className="field" type="email" name="email" placeholder="Email" required onChange={e => setEmail(e.target.value)} />
+                    <input className="field" type="text" name="phone" placeholder="Phone number" required onChange={e => setPhone(e.target.value)} />
+                    <input className="field" type="password" name="password" placeholder="Password" required onChange={e => setPassword(e.target.value)} />
+                    <input className="field" type="password" name="confirmPassword" placeholder="Confirm password" required onChange={e => setConfirmPassword(e.target.value)} />
+                    <br></br>
+                    <div><span className='allfield'>Note:All fields are mandatory</span></div>
+                        <button className="button" type="submit">Register</button>
+                        <p className="text">Already have an account??<Link className="login" to = "/login">Login Now</Link></p>
+                    </div>
+                </div>
             </form>
         </div>
     )

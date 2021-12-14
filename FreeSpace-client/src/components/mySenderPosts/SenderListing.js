@@ -12,7 +12,7 @@ import '../mySenderPosts/Senderlisting.css';
 export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [isAuth] = useState(true)
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(3);
+    const [postsPerPage] = useState(9);
     const [senderPosts, setSenderPosts] = useState([]);
     const history = useHistory();
     const handleDelete = (id) => {

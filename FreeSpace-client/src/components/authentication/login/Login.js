@@ -14,7 +14,6 @@ export const Login = ({setLoggedInUserName, setLoggedInUserEmail}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const history = useHistory();
-    // const [isAuth, setIsAuth] = useState(false)
     useEffect(() => {
         fetch(serverURL + 'auth/session', {
             credentials: 'include'
@@ -32,7 +31,6 @@ export const Login = ({setLoggedInUserName, setLoggedInUserEmail}) => {
     }, [history, setLoggedInUserName, setLoggedInUserEmail])
     return (
         <div>
-            {/* {!isAuth && */}
             <form onSubmit={(e)=>{
                             e.preventDefault();
                             console.log(`inside login`);
@@ -58,33 +56,28 @@ export const Login = ({setLoggedInUserName, setLoggedInUserEmail}) => {
                             .catch(err => console.log(err));
                         }}>
                 <div className="container">
-                <div className="flex-container">
-                  
-                <div className="left-column">
-                <img className="left" src={image} alt="bgImage" />   
-                </div>
-                <div className="right-column">
-                <img className="logo" src={logo} alt="Logo" />
-                <br></br>
-                <h5 className="slagon">Skip the stress.<span className="slagon-part-2">Ship your luggage.</span> </h5>
-                {/* <label className="login">Login</label> */}
-                {validationError && <div className='validationError m-4'>{validationError}</div>}
-                <input  className ="text-username" type="text" name="username" required placeholder="Username" onChange={e => setUsername(e.target.value)}/>
-                
-                <input className ="user-password" type="password" name="password" required placeholder="Password" onChange={e => setPassword(e.target.value)}/>
-                <br></br>
-                <button className="login-button" type="submit">Login</button>
-                <br></br>
-                <div className="r2-column">
-                <p className="account">Don't have an account??</p>
-               
-                <Link className ="register" to = "/register">Register Now</Link>
-                </div> 
-                </div>
+                    <div className="flex-container">
+                        <div className="left-column">
+                            <img className="left" src={image} alt="bgImage" />   
+                        </div>
+                    <div className="right-column">
+                        <img className="logo" src={logo} alt="Logo" />
+                        <br></br>
+                        <h5 className="slagon">Skip the stress.<span className="slagon-part-2">Ship your luggage.</span> </h5>
+                        {validationError && <div className='validationError m-4'>{validationError}</div>}
+                        <input  className ="text-username" type="text" name="username" required placeholder="Username" onChange={e => setUsername(e.target.value)}/>
+                        <input className ="user-password" type="password" name="password" required placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+                        <br></br>
+                        <button className="login-button" type="submit">Login</button>
+                        <br></br>
+                        <div className="r2-column">
+                            <p className="account">Don't have an account??</p>
+                           <Link className ="register" to = "/register">Register Now</Link>
+                        </div> 
+                    </div>
                 </div>
                 </div>
             </form>
-        {/* } */}
         </div>
     )
 }

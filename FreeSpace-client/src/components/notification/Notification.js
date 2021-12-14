@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import {useHistory} from "react-router-dom";
 import serverURL from '../../configVars';
 import { CardGroup, Card, Button} from 'react-bootstrap';
+
 export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const history = useHistory();
     const [notificationsList, setNotificationsList] = useState([])
@@ -92,7 +93,6 @@ export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                     </Card>
                     </div>
                 })}
-               
-            </CardGroup>
+        </CardGroup>
     )
 }

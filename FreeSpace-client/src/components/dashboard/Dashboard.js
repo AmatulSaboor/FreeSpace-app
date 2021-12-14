@@ -21,7 +21,7 @@ export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [currentPageSender, setCurrentPageSender] = useState(1);
     const [senderPostsPerPage] = useState(12);
     const [currentPageCarrier, setCurrentPageCarrier] = useState(1);
-    const [carrierPostsPerPage] = useState(4);
+    const [carrierPostsPerPage] = useState(12);
 
     // get sender current posts
     const indexOfLastSenderPost = currentPageSender * senderPostsPerPage;

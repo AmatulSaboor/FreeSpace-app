@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const CarrierPost = require('../models/CarriersPosts');
 
-router.get('/', (req, res) => {
-    console.log('inside get carrier');
-    res.send('hello carrier get');
-})
+// router.get('/', (req, res) => {
+//     console.log('inside get carrier');
+//     res.send('hello carrier get');
+// })
 
 router.get('/getListing', async (req, res) => {
     res.send(JSON.stringify({carrierPostList : await CarrierPost.find({createdBy: req.session.user.username})}));

@@ -43,13 +43,11 @@ export const SideBar =({setLoggedInUserName, setLoggedInUserEmail, loggedInUserN
                     <li><img className="user" src={user} alt="user" /></li>
                     <li className='user-name-field' > <div>User Name: {loggedInUserName} </div></li>
            <li className='user-name-field'><div>Email: {loggedInUserEmail}</div></li>
-           
+           <li className="user-name-field"><Link className="linkto" to = "/dashboard"> Go To Home</Link></li>
             <li className="user-name-field"><Link className="linkto" to = "/sender-listings"> My Sender Listing</Link></li>
             <li className="user-name-field"><Link className="linkto" to = "/carrier-listings"> My Carrier Listing</Link></li>
             <li className="user-name-field"><Link className="linkto" to = "/notification"> My Notifications</Link></li>
             
-            <li className="user-name-field"><Link className="linkto" to = "/Privacy"> Privacy and Policy</Link></li>
-            <li className="user-name-field"><Link className="linkto" to = "/TermandCondition">Term And Condition</Link></li>
             <li className='user-name-field'><button className='LOGOUT' onClick = {logout}>Log Out</button></li>
             
 
