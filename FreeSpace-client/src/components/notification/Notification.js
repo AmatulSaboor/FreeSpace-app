@@ -50,11 +50,10 @@ export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                 {notificationsList.map((notification) => { 
                 return <div className='nothing'><Card className ='card-carrier' key ={notification._id}>
                         <Card.Body>
-                        <Card.Title>Posted by <span className='date'>{notification.senderName}</span></Card.Title>
-                        {notification.isRead && <Card.Title>Read <span className='date'></span></Card.Title>}
-                        {!notification.isRead && <Card.Title>Mark isRead <span className='date'></span></Card.Title>}
+                        <Card.Title><span className='date bold'>{notification.senderName}</span> is interested in contacting you. Please contact him/her through provided phone number or email address for further procedure.</Card.Title>
                         <Card.Text>
-                            <div><span className='italic'>{post.createdBy}</span> wants to send <span className='bold'><br></br>{post.weight}</span>kg(s) <br></br>stuff from <span className='bold'>{post.originCity}, {post.originCountry}</span><br></br> to <span className='bold'>{post.destinationCity}, {post.destinationCountry}</span><br></br> before <span className='italic'>{post.expiresOn.slice(0,10)}</span></div>
+                            <span className='date'>Email: {notification.senderEmail}</span>
+                            <span className='date'>Phone Number: {notification.senderPhone}</span>
                         </Card.Text>
                         </Card.Body>
                         <Card.Footer>
