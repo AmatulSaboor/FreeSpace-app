@@ -69,10 +69,15 @@ router.post('/register', async (req, res) => {
         }
         else{
             console.log(`invalid password`)
+            throw new Error(`password must not contain white-spaces, have at least one uppercase character, contain at least one digit, contain at least one special symbol, must be 10-16 characters long`);
         }
     }catch(e){
       if (e.message.indexOf('validation failed') !== -1) {
         e = Object.values(e.errors)[0].message
+      }
+      else{
+          console.log(`inside else for invalid password`)
+          e = e.message;
       }
       return res.send(JSON.stringify({error: e, username: req.body.username, email:req.body.email}));
     }
