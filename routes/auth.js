@@ -23,14 +23,14 @@ router.get('/checkOnline/:username', (req, res) => {
             if (err) throw err;
             // console.log(data)
             if(data){
-                console.log('i am inside if')
+                // console.log('i am inside if')
                 isOnline = true;
                 socketId = data.session.user.socketId
                 console.log(`online : ${isOnline} | Id ${socketId}`)
             }
             else{
                 console.log('i am inside else')
-                isOnline = false;
+                // isOnline = false;
             }
             res.send(JSON.stringify({isOnline, socketId}));
         })

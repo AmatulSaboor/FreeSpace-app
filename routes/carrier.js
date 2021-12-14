@@ -54,7 +54,7 @@ router.post('/update', async (req, res) => {
             'comments' : req.body.comments
         }});
         console.log(editedCarrierPost)
-        res.send(JSON.stringify({editedCarrierPost}));}
+        res.send(JSON.stringify({editedCarrierPost:req.body}));}
     catch(e){
         if (e.message.indexOf('validation failed') !== -1) {
             e = Object.values(e.errors)[0].message
