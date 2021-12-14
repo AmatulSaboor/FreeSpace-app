@@ -3,95 +3,95 @@ import {useState} from 'react';
 import countries from '../../data/listOfCountriesAndCities.json';
 import serverURL from "../../configVars";
 
-// states
 const AddForm = ({handleClose, handleCreate}) => {
-const [departureDate, setDepartureDate] = useState('');
-const [arrivalDate, setArrivalDate] = useState('');
-const [departureCountry, setDepartureCountry] = useState('');
-const [departureCity, setDepartureCity] = useState('');
-const [arrivalCountry, setArrivalCountry] = useState('');
-const [arrivalCity, setArrivalCity] = useState('');
-const [weight, setWeight] = useState();
-const [volume, setVolume] = useState();
-const [ratesPerKg, setRatesPerKg] = useState();
-const [comments, setComments] = useState();
-const [arrivalCities, setArrivalCities] = useState([]);
-const [departureCities, setDepartureCities] = useState([])
-const [validationError, setValidationError] = useState(null)
-// abstracting individual countries
-const countryList = Object.keys(countries).map(key => ({
-   name: key
-}));
+   const [departureDate, setDepartureDate] = useState('');
+   const [arrivalDate, setArrivalDate] = useState('');
+   const [departureCountry, setDepartureCountry] = useState('');
+   const [departureCity, setDepartureCity] = useState('');
+   const [arrivalCountry, setArrivalCountry] = useState('');
+   const [arrivalCity, setArrivalCity] = useState('');
+   const [weight, setWeight] = useState();
+   const [volume, setVolume] = useState();
+   const [ratesPerKg, setRatesPerKg] = useState();
+   const [comments, setComments] = useState();
+   const [arrivalCities, setArrivalCities] = useState([]);
+   const [departureCities, setDepartureCities] = useState([])
+   const [validationError, setValidationError] = useState(null)
 
-// shows origin cities dropdown wrt country
-function handleDepartureCountrySelect(e) {
-   const countrySel = e.target.value;
-   const citiesSel = countrySel !== "" ? countries[countrySel] : "";
-   setDepartureCountry(countrySel);
-   setDepartureCities(citiesSel);
-   setDepartureCity("");
-}
+   // abstracting individual countries
+   const countryList = Object.keys(countries).map(key => ({
+      name: key
+   }));
 
-// selecting origin city
-function handleDepartureCitySelect(e) {
-   const citiesSel = e.target.value;
-   setDepartureCity(citiesSel);
-}
-
-// shows destination cities dropdown wrt country
-function handleArrivalCountrySelect(e) {
-   const countrySel = e.target.value;
-   const citiesSel = countrySel !== "" ? countries[countrySel] : "";
-   setArrivalCountry(countrySel);
-   setArrivalCities(citiesSel);
-   setArrivalCity("");
-}
-
-// selecting destination city
-function handleArrivalCitySelect(e) {
-   const citiesSel = e.target.value;
-   setArrivalCity(citiesSel);
-}
-
-// fetching data on submit
-const handleSubmit = (e) => {
-   e.preventDefault();
-   if (departureDate > arrivalDate){
-      setValidationError(`Departure date can't be eariler than arrival date`)
-      return;
+   // shows origin cities dropdown wrt country
+   function handleDepartureCountrySelect(e) {
+      const countrySel = e.target.value;
+      const citiesSel = countrySel !== "" ? countries[countrySel] : "";
+      setDepartureCountry(countrySel);
+      setDepartureCities(citiesSel);
+      setDepartureCity("");
    }
-   const today = new Date();
-   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-   if (departureDate < date) {
-      setValidationError(`Departure date can't be before the current date`)
-      return;
-   }
-   if(weight <= 0) {
-      setValidationError(`Weight can't be less than or equal to zero kg`)
-      return;
-   }
-   if(weight > 30) {
-      setValidationError(`Weight can't be greater than 30kgs`)
-      return;
-   }
-   console.log(departureDate);
-   fetch(serverURL + "carrier/create",
-   {
-   mode: 'cors',
-   method: 'POST',
-   headers: { 'Content-Type':'application/json' },
-   body: JSON.stringify({ departureCountry, departureCity, arrivalCountry, arrivalCity, weight, volume, ratesPerKg, arrivalDate, departureDate, comments}),
-   credentials: 'include'
-   })
-   .then((response) => response.json())
-   .then(response => {console.log(response);
-      handleCreate(response.carrierPost);
-      handleClose();
-   })
-   .catch(err => console.log(err));
-}
 
-return (
+   // selecting origin city
+   function handleDepartureCitySelect(e) {
+      const citiesSel = e.target.value;
+      setDepartureCity(citiesSel);
+   }
+
+   // shows destination cities dropdown wrt country
+   function handleArrivalCountrySelect(e) {
+      const countrySel = e.target.value;
+      const citiesSel = countrySel !== "" ? countries[countrySel] : "";
+      setArrivalCountry(countrySel);
+      setArrivalCities(citiesSel);
+      setArrivalCity("");
+   }
+
+   // selecting destination city
+   function handleArrivalCitySelect(e) {
+      const citiesSel = e.target.value;
+      setArrivalCity(citiesSel);
+   }
+
+   // fetching data on submit
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      if (departureDate > arrivalDate){
+         setValidationError(`Departure date can't be eariler than arrival date`)
+         return;
+      }
+      const today = new Date();
+      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      if (departureDate < date) {
+         setValidationError(`Departure date can't be before the current date`)
+         return;
+      }
+      if(weight <= 0) {
+         setValidationError(`Weight can't be less than or equal to zero kg`)
+         return;
+      }
+      if(weight > 30) {
+         setValidationError(`Weight can't be greater than 30kgs`)
+         return;
+      }
+      console.log(departureDate);
+      fetch(serverURL + "carrier/create",
+      {
+         mode: 'cors',
+         method: 'POST',
+         headers: { 'Content-Type':'application/json' },
+         body: JSON.stringify({ departureCountry, departureCity, arrivalCountry, arrivalCity, weight, volume, ratesPerKg, arrivalDate, departureDate, comments}),
+         credentials: 'include'
+      })
+      .then((response) => response.json())
+      .then(response => {console.log(response);
+         handleCreate(response.carrierPost);
+         handleClose();
+      })
+      .catch(err => console.log(err));
+   }
+
+   return (
    <Form onSubmit={handleSubmit}>
       {validationError && <div className='validationError m-4'>{validationError}</div>}
       <Form.Group>

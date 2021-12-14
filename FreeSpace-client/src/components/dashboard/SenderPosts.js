@@ -189,8 +189,7 @@ export const SenderPosts = ({socket, senderPosts, currentPostsSender, setSenderP
                         </Card.Body>
                         <Card.Footer>
                             <span className="text-muted">Posted On {post.createdAt.slice(0,10)}</span>
-                            {/* <div><DetailModal post={post} socket={socket}/></div> */}
-                            <div><DetailModal post={post} setIsChatting={setIsChatting} setPostOwnerSocketId={setPostOwnerSocketId} postOwnerSocketId={postOwnerSocketId}/></div>
+                            <div><DetailModal post={post} /></div>
                         </Card.Footer>
                     </Card>
                     </div>

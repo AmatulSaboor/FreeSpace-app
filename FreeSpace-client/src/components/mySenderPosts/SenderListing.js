@@ -5,9 +5,7 @@ import { CardGroup, Card, Button} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
 import Pagination from '../pagination/Pagination';
 import serverURL from '../../configVars';
-import { Link } from 'react-router-dom';
 import '../mySenderPosts/Senderlisting.css';
-
 
 export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [isAuth] = useState(true)
@@ -16,17 +14,14 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [senderPosts, setSenderPosts] = useState([]);
     const history = useHistory();
     const handleDelete = (id) => {
-        console.log(`handle delete`);
         setSenderPosts(senderPosts.filter(i => i._id !== id));
     }
     const handleCreate = (post) => {
-        console.log(`handle create`);
         const copyPosts = [...senderPosts];
         copyPosts.push(post);
         setSenderPosts(copyPosts)
     }
     const handleEdit = (post) => {
-        console.log(`handle edit`);
 
         setSenderPosts(senderPosts.filter( item => {
             if (item._id === post._id){
@@ -44,12 +39,11 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
             return item;
         }))
     }
-
     // get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = senderPosts.slice(indexOfFirstPost,indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = senderPosts.slice(indexOfFirstPost,indexOfLastPost);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
     useEffect(() => {
         fetch(serverURL + 'auth/session', {
@@ -73,12 +67,9 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
         })
         .catch(err => {console.log(err);
         })
-
-        
     }, [history, setLoggedInUserName, setLoggedInUserEmail])
 
     return (
-        
         <div> {isAuth && 
             <div><div className="container-listing">
             <div className="container-xl">
@@ -91,7 +82,6 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                                             <li className="listing-name">
                                                 My Sender Listing
                                             </li>
-                                          
                                         </ul>
                                     </nav>
                                 </div>

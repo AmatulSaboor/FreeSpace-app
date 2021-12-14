@@ -46,7 +46,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path = "/">
-            {(!isAuthenticated && <Login setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>) || (<div><Menu loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/><Dashboard /></div>)}
+            {(!isAuthenticated && <Login setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>) || (<div><Menu /><Dashboard /></div>)}
           </Route>
           <Route exact path = "/login">
             <Login setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
@@ -55,15 +55,14 @@ const App = () => {
             <Register setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
           </Route>
           <Route exact path = "/dashboard">
-            <Menu loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/><Dashboard setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
+            <Menu /><Dashboard setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
           </Route>
           <Route exact path = "/sender-listings">
-            <Menu loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/><SenderListing setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
+            <Menu /><SenderListing setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
           </Route>
           <Route exact path = "/carrier-listings">
-            <Menu loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/><CarrierListing setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
+            <Menu /><CarrierListing setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
           </Route>
-          
           <Route excat path="/sidebar">
             <SideBar loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName} setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
            </Route>
@@ -74,7 +73,7 @@ const App = () => {
             <SideBar loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/>
            </Route>
            <Route exact path="/notification">
-            <Menu loggedInUserEmail={loggedInUserEmail} loggedInUserName={loggedInUserName}/><Notification setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
+            <Menu /><Notification setLoggedInUserEmail={setLoggedInUserEmail} setLoggedInUserName={setLoggedInUserName}/>
           </Route>
           <Route path = "*">
             <h5>404 Page not Found</h5>

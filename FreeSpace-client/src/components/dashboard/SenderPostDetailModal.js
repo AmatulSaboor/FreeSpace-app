@@ -3,7 +3,7 @@ import { Modal, Button, Card } from 'react-bootstrap'
 import serverURL from '../../configVars';
 import {useHistory} from "react-router-dom";
 
-export default function DetailModal({post, setIsChatting, postOwnerSocketId, setPostOwnerSocketId}) {
+export default function DetailModal({post}) {
     const [show, setShow] = useState(false);
     const history = useHistory();
     const handleShow = () => setShow(true);

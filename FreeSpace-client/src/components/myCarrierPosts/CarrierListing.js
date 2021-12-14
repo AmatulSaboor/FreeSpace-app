@@ -46,12 +46,11 @@ export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     }
 
     // get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = carrierPosts.slice(indexOfFirstPost,indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = carrierPosts.slice(indexOfFirstPost,indexOfLastPost);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
-//   setIsAuth(useAuthentication());
     useEffect(() => {
         fetch(serverURL + 'auth/session', {
             credentials: 'include'
@@ -59,7 +58,7 @@ export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
         .then((res => res.json()))
         .then(res => {console.log(res); 
             if(!res.isAuthenticated){
-               return history.push('./login');
+                return history.push('./login');
             }else{
                 setLoggedInUserEmail(res.email)
                 setLoggedInUserName(res.username)
@@ -74,8 +73,6 @@ export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
         })
         .catch(err => {console.log(err);
         })
-
-        
     }, [history, setLoggedInUserName, setLoggedInUserEmail])
 
     return (
@@ -159,48 +156,12 @@ export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                                 </Card>
                             })}
                         </CardGroup>
-                        {/* <table className="table table-striped table-hover">
-                            
-                            {currentPosts.map((senderPost) => 
-                                <tr key={senderPost._id}>
-                                    <td >{senderPost.originCountry}</td>
-                                    <td>{senderPost.originCity}</td>
-                                    <td>{senderPost.destinationCountry}</td>
-                                    <td>{senderPost.destinationCity}</td>
-                                    <td>{senderPost.expiresOn}</td>
-                                    <td>{senderPost.volume}</td>
-                                    <td>{senderPost.volume}</td>
-                                    <td>{senderPost.willingToPayPerKg}</td>
-                                    <td>{senderPost.items}</td>
-                                    <td>{senderPost.comments}</td>
-                                    <td>
-                                        <EditModal post = {senderPost} handleEdit = {handleEdit}/>
-                                    </td>
-                                    <td><button onClick={
-                                        (e)=>{
-                                            console.log(senderPost._id);
-                                            fetch(serverURL + `sender/delete/${senderPost._id}`)
-                                            .then( response => response.json())
-                                            .then (response => {
-                                                    console.log(response);
-                                                    handleDelete(senderPost._id)
-                                                })
-                                            .catch(err => console.log(err));
-                                        }
-                                    } className="delete" ><i className="material-icons" title="Delete">&#xE872;</i></button>
-                                    </td>
-                                </tr>
-                            )}
-                            </tbody>
-                        </table> */}
                     </div>
                 </div>  
                 <Pagination postsPerPage = {postsPerPage} totalPosts = {carrierPosts.length} paginate = {paginate}/>  
             </div>
-            // </div>
         }
         </div>
-        
     )
 }
 
