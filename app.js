@@ -7,16 +7,13 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
 const port = process.env.PORT || 3000;
 const http = require('http').Server(app);
-const {Server} = require('socket.io');
-const io = new Server(http);
 const carrierRouter = require('./routes/carrier');
 const senderRouter = require('./routes/sender');
 const authRouter = require('./routes/auth');
 const notificationRouter = require('./routes/notification');
 const uri = "mongodb+srv://FS-developers:Password123@cluster0.vzs9g.mongodb.net/FreeSpace?retryWrites=true&w=majority";
 const mongoose = require('mongoose');
-const {MongoClient, ObjectId} = require('mongodb');
-const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+
 // connection to DB
 mongoose.connect(uri).then((result)=>{
     console.log('connected to Mongo DB Atlas');
@@ -47,7 +44,6 @@ app.use('/carrier', carrierRouter);
 app.use('/sender', senderRouter);
 app.use('/auth', authRouter);
 app.use('/notification', notificationRouter);
-
 app.use(express.static(path.join(__dirname, "/FreeSpace-client/build")));
 app.get('*', (req, res) => {
     console.log(`inside * path`)
@@ -57,6 +53,5 @@ app.get('/', (req, res) => {
     console.log('I am here');
     res.send(JSON.stringify('Hello world'));
 })
-
 
 http.listen(port, () => {`Example app listening on port ${port}`});

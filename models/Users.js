@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {isEmail} = require('validator');
+const {isEmail, isMobilePhone} = require('validator');
 
 const UserSchema = new Schema(
   {
@@ -21,6 +21,9 @@ const UserSchema = new Schema(
     phone: {
       type: String,
       required: [true, 'Phone number is required'],
+      minlength: [6, 'Phone must be 6 or more characters'],
+      unique: [true, 'Phone number already taken by another user'],
+      validate: [isMobilePhone, 'Number entered is not a valid phone number']
     },
     password: {
       type: String,

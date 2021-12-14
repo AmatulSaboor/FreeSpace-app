@@ -5,7 +5,6 @@ import { CardGroup, Card, Button} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
 import Pagination from '../pagination/Pagination';
 import serverURL from '../../configVars';
-import { Link } from 'react-router-dom';
 import '../mySenderPosts/Senderlisting.css';
 
 
@@ -13,7 +12,7 @@ import '../mySenderPosts/Senderlisting.css';
 export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [isAuth] = useState(true)
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(9);
+    const [postsPerPage] = useState(4);
     const [carrierPosts, setCarrierPosts] = useState([]);
     const history = useHistory();
     const handleDelete = (id) => {

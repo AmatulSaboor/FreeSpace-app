@@ -21,16 +21,13 @@ router.get('/checkOnline/:username', (req, res) => {
         const mySessions = client.db('FreeSpace').collection('mySessions');
         mySessions.findOne({'session.user.username':req.params.username}, (err, data) => {
             if (err) throw err;
-            // console.log(data)
             if(data){
-                // console.log('i am inside if')
                 isOnline = true;
                 socketId = data.session.user.socketId
                 console.log(`online : ${isOnline} | Id ${socketId}`)
             }
             else{
                 console.log('i am inside else')
-                // isOnline = false;
             }
             res.send(JSON.stringify({isOnline, socketId}));
         })
@@ -79,6 +76,7 @@ router.post('/login', (req, res) => {
   
 // ================================================= register ===================================================
 router.post('/register', async (req, res) => {
+    const regex = /^(?!.\s)(?=.[A-Z])(?=.[a-z])(?=.[0-9])(?=.[~`!@#$%^&()--+={}\[\]|\\:;"'<>,.?/_₹]).{10,16}$/;
     console.log(req.body);
     console.log('inside register post')
     let newUser = await User.findOne({email: req.body.email});
@@ -90,13 +88,18 @@ router.post('/register', async (req, res) => {
       return res.send(JSON.stringify({error: 'You already have this username, sign in now!', username: newUser.username}));
     }
     try{
-      req.body.password = await bcrypt.hash(req.body.password, 10);
-      req.body.confirmPassword = await bcrypt.hash(req.body.confirmPassword, 10);
-      newUser = new User(req.body);
-      await newUser.save();
-      req.session.isAuthenticated = true;
-      req.session.user = req.body;
-      res.send(JSON.stringify({message: req.body.username + ' is successfully registered', username: req.body.username, email:req.body.email}));
+        if (regex.test(req.body.password)){
+            req.body.password = await bcrypt.hash(req.body.password, 10);
+            req.body.confirmPassword = await bcrypt.hash(req.body.confirmPassword, 10);
+            newUser = new User(req.body);
+            await newUser.save();
+            req.session.isAuthenticated = true;
+            req.session.user = req.body;
+            res.send(JSON.stringify({message: req.body.username + ' is successfully registered', username: req.body.username, email:req.body.email}));
+        }
+        else{
+            console.log(`inalid password`)
+        }
     }catch(e){
       if (e.message.indexOf('validation failed') !== -1) {
         e = Object.values(e.errors)[0].message
