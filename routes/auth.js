@@ -88,7 +88,8 @@ router.post('/register', async (req, res) => {
       return res.send(JSON.stringify({error: 'You already have this username, sign in now!', username: newUser.username}));
     }
     try{
-        if (regex.test(req.body.password)){
+        console.log(regex.test(req.body.password));
+        // if (regex.test(req.body.password)){
             req.body.password = await bcrypt.hash(req.body.password, 10);
             req.body.confirmPassword = await bcrypt.hash(req.body.confirmPassword, 10);
             newUser = new User(req.body);
@@ -96,10 +97,10 @@ router.post('/register', async (req, res) => {
             req.session.isAuthenticated = true;
             req.session.user = req.body;
             res.send(JSON.stringify({message: req.body.username + ' is successfully registered', username: req.body.username, email:req.body.email}));
-        }
-        else{
-            console.log(`inalid password`)
-        }
+        // }
+        // else{
+        //     console.log(`invalid password`)
+        // }
     }catch(e){
       if (e.message.indexOf('validation failed') !== -1) {
         e = Object.values(e.errors)[0].message
