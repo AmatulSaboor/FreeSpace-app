@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { CardGroup, Card, Form, Button} from 'react-bootstrap';
 import DetailModal from './SenderPostDetailModal';
-import Chat from '../chat/Chat';
 import countries from '../../data/listOfCountriesAndCities.json';
 import serverURL from '../../configVars';
 import '../dashboard/Posts.css'
@@ -197,7 +196,6 @@ export const SenderPosts = ({socket, senderPosts, currentPostsSender, setSenderP
                     </div>
                 })}
             </CardGroup>
-            {isChatting && <Chat socket={socket} setIsChatting={setIsChatting} postOwnerSocketId={postOwnerSocketId} />}
         </div>
     )
 }
