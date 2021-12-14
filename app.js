@@ -55,7 +55,7 @@ app.get('*', (req, res) => {
 });
 app.get('/', (req, res) => {
     console.log('I am here');
-    res.send(JSON.stringify('hello world'));
+    res.send(JSON.stringify('Hello world'));
 })
 
 
