@@ -1,39 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/Users');
-console.log(`inside server`)
-const session = require('express-session');
 const bcrypt = require('bcryptjs');
-const MongoDBStore = require('connect-mongodb-session')(session);
-const uri = "mongodb+srv://FS-developers:Password123@cluster0.vzs9g.mongodb.net/FreeSpace?retryWrites=true&w=majority";
-const { MongoClient } = require('mongodb');
-const mongoose = require('mongoose');
-const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-router.get('/checkOnline/:username', (req, res) => {
-    console.log('I am here');
-    // console.log(req.session);
-    let isOnline = null;
-    let socketId = null;
-    client.connect((err) => {
-        if (err)
-          throw err;
-        const mySessions = client.db('FreeSpace').collection('mySessions');
-        mySessions.findOne({'session.user.username':req.params.username}, (err, data) => {
-            if (err) throw err;
-            if(data){
-                isOnline = true;
-                socketId = data.session.user.socketId
-                console.log(`online : ${isOnline} | Id ${socketId}`)
-            }
-            else{
-                console.log('i am inside else')
-            }
-            res.send(JSON.stringify({isOnline, socketId}));
-        })
-    })
-    
-})
 // =============================================== checks authentication ====================================
 router.get('/session', (req, res) => {
     console.log(`i am inside session`)

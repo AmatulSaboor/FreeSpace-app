@@ -2,11 +2,6 @@ const { Router } = require('express');
 const router = Router();
 const SenderPost = require('../models/SendersPosts');
 
-// router.get('/', (req, res) => {
-//     console.log(`${req.body} inside get sender`);
-//     res.send('hello sender get');
-// })
-
 router.get('/getListing', async (req, res) => {
     res.send(JSON.stringify({senderPostList : await SenderPost.find({createdBy: req.session.user.username})}));
 })
@@ -37,12 +32,6 @@ router.post('/create', async (req, res) => {
 router.post('/update', async (req, res) => {
     console.log(`inside update`)
     console.log(req.body);
-    // SenderPost.findByIdAndUpdate(req.body._id, {$set: {'weight':req.body.weight, 'vloume':req.body.volume}}, (err, result) => {
-    //     if (err) throw err;
-    //     console.log('just to check')
-    //     console.log(result)
-    //     res.send(JSON.stringify({editedSenderPost: 'dont know yet'}));
-    // });
     const modifiedSenderPost = await SenderPost.findByIdAndUpdate(req.body._id, {$set: {
         'originCountry' : req.body.originCountry,
         'originCity' : req.body.originCity,
@@ -59,7 +48,6 @@ router.post('/update', async (req, res) => {
 })
 
 router.get('/delete/:id', async (req, res) => {
-    // const result = await SenderPost.findByIdAndDelete({_id:req.params.id});
     await SenderPost.findByIdAndDelete({_id:req.params.id});
     res.send(JSON.stringify({message: `deleted`}));
 })
