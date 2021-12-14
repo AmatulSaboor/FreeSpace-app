@@ -4,44 +4,19 @@ import '../../configVars'
 import '../dashboard/PostDetail.css'
 import {useHistory} from "react-router-dom";
 import serverURL from '../../configVars';
-// import Chat from '../chat/Chat';
-// const serverURL = 'https://freespace-server.herokuapp.com/';
-// const serverURL = 'http://localhost:9000/'; 
 
-// export default function DetailModal({socket, post}) {
-export default function DetailModal({post, setIsChatting, postOwnerSocketId, setPostOwnerSocketId}) {
+export default function DetailModal({post}) {
     const [show, setShow] = useState(false);
-    // const [postOwnerSocketId, setPostOwnerSocketId] = useState()
     const handleShow = () => setShow(true);
     const history = useHistory();
     const handleClose = () => setShow(false);
-    const handleLiveChat = () => {
-        setIsChatting(true)
-        handleClose()
 
-    }
-    // useEffect(()=>{
-    //     fetch(serverURL + `auth/checkOnline/${post.createdBy}`).then(res => res.json())
-    //     .then(res => {
-    //         console.log(res)
-    //         if(res.isOnline){
-    //             console.log(res.socketId)
-    //             console.log(postOwnerSocketId)
-    //             if(postOwnerSocketId===undefined){}
-    //                 // setPostOwnerSocketId(res.socketId);
-    //         }
-    //     })
-    //     .catch(err => console.log(err))
-    // })
     return (
         <div>
             
             <Button onClick={handleShow} data-toggle="modal"><span className='detail-button'>Details</span></Button> 
-            
             <Modal show={show} onHide={handleClose}>
-            
                 <Modal.Header className='detail-post'>
-                
                     <Modal.Title className='modal-detail-class'>
                         <Card.Text className='detail-post-heading'>Posted by <span className='date'>{post.createdBy} on {post.createdAt.slice(0,10)}</span></Card.Text>
                     </Modal.Title>
@@ -86,11 +61,7 @@ export default function DetailModal({post, setIsChatting, postOwnerSocketId, set
                     }>Interested</Button>
                     <Button className='livechat'variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
-               
             </Modal>
-            
-            {/* {isChatting && <Chat socket={socket} setIsChatting={setIsChatting} postOwnerSocketId={postOwnerSocketId}/>} */}
-            {/* {isChatting && <Chat socket={socket} setIsChatting={setIsChatting}/>} */}
         </div>
     )
 }

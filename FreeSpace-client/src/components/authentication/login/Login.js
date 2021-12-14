@@ -33,7 +33,6 @@ export const Login = ({setLoggedInUserName, setLoggedInUserEmail}) => {
         <div>
             <form onSubmit={(e)=>{
                             e.preventDefault();
-                            console.log(`inside login`);
                             fetch(serverURL + "auth/login",
                             {
                                 mode: 'cors',

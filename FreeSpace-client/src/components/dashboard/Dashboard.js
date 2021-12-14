@@ -5,13 +5,10 @@ import { Tabs, Tab, Spinner} from 'react-bootstrap';
 import {CarrierPosts} from './CarrierPosts';
 import {SenderPosts} from './SenderPosts';
 import Pagination from '../pagination/Pagination';
-// import io from 'socket.io-client';
-// import '../../assets/style.css'
 import '../dashboard/Dashboard.css'
 import '../menu/Menu'
 import serverURL from '../../configVars';
 import '../sideBar/SideBar'
-import Sidebar from 'react-sidebar';
 
 export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     
@@ -60,27 +57,22 @@ export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
         .then(res => res.json())
         .then(res => {setSenderPosts(res.senderPostList); setSpinner(false)})
         .catch(err => console.log(err))
-    
-        
     },
     []
     )
-    const handleCreate = (post) => {
-        console.log(`handle create`);
-        const copyPosts = [...CarrierPosts];
-        copyPosts.push(post);
-        setCarrierPosts(copyPosts)
-    }
+    // const handleCreate = (post) => {
+    //     console.log(`handle create`);
+    //     const copyPosts = [...CarrierPosts];
+    //     copyPosts.push(post);
+    //     setCarrierPosts(copyPosts)
+    // }
     
     return (
         <div className='dahboard'>
             {spinner && 
             <Spinner animation="border" role="status">
-                {/* <span classNameName="visually-hidden">Loading...</span> */}
             </Spinner>}
-            
             <Tabs  defaultActiveKey="carrier" id="uncontrolled-tab-example" className="mb-3">
-             
                 <Tab id="hover-post" className="posts flex-column" eventKey="carrier" title="Carrier Posts">
                     <CarrierPosts currentPostsCarrier = {currentPostsCarrier} carrierPosts={carrierPosts} setCarrierPosts = {setCarrierPosts} />
                     <Pagination postsPerPage = {carrierPostsPerPage} totalPosts = {carrierPosts.length} paginate = {paginateCarrier} />
@@ -89,21 +81,10 @@ export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                     <SenderPosts className='sender-dashboard' currentPostsSender = {currentPostsSender} senderPosts={senderPosts} setSenderPosts={setSenderPosts} />
                     <Pagination postsPerPage = {senderPostsPerPage} totalPosts = {senderPosts.length} paginate = {paginateSender} />
                 </Tab>
-                
-                
-                
                 </Tabs>  
-           
-            
-            
             <div className="divider">
-        
-    </div>
-    
-    
+            </div>
         </div>
-        
-        
     )
     
 }

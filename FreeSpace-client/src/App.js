@@ -10,8 +10,6 @@ import { CarrierListing } from './components/myCarrierPosts/CarrierListing';
 import { SideBar } from './components/sideBar/SideBar.js';
 import serverURL from './configVars';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { termandcondition } from './components/termandcondition/termandcondition';
-import { privacy } from './components/privacy/privacy.js';
 import { Notification } from './components/notification/Notification';
 
 const App = () => {

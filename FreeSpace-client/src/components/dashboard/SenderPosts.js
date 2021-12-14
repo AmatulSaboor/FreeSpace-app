@@ -59,40 +59,40 @@ export const SenderPosts = ({socket, senderPosts, currentPostsSender, setSenderP
         .catch(err => console.log(err));
      }
     
-// abstracting individual countries
-const countryList = Object.keys(countries).map(key => ({
-    name: key
- }));
+    // abstracting individual countries
+    const countryList = Object.keys(countries).map(key => ({
+        name: key
+    }));
+    
+    // shows origin cities dropdown wrt country
+    function handleOriginCountrySelect(e) {
+        const countrySel = e.target.value;
+        const citiesSel = countrySel !== "" ? countries[countrySel] : "";
+        setOriginCountry(countrySel);
+        setOriginCities(citiesSel);
+        setOriginCity("");
+    }
  
- // shows origin cities dropdown wrt country
- function handleOriginCountrySelect(e) {
-    const countrySel = e.target.value;
-    const citiesSel = countrySel !== "" ? countries[countrySel] : "";
-    setOriginCountry(countrySel);
-    setOriginCities(citiesSel);
-    setOriginCity("");
- }
- 
- // selecting origin city
- function handleOriginCitySelect(e) {
-    const citiesSel = e.target.value;
-    setOriginCity(citiesSel);
- }
- 
- // shows destination cities dropdown wrt country
- function handleDestinationCountrySelect(e) {
-    const countrySel = e.target.value;
-    const citiesSel = countrySel !== "" ? countries[countrySel] : "";
-    setDestinationCountry(countrySel);
-    setDestinationCities(citiesSel);
-    setDestinationCity("");
- }
- 
- // selecting destination city
- function handleDestinationCitySelect(e) {
-    const citiesSel = e.target.value;
-    setDestinationCity(citiesSel);
- }
+    // selecting origin city
+    function handleOriginCitySelect(e) {
+        const citiesSel = e.target.value;
+        setOriginCity(citiesSel);
+    }
+    
+    // shows destination cities dropdown wrt country
+    function handleDestinationCountrySelect(e) {
+        const countrySel = e.target.value;
+        const citiesSel = countrySel !== "" ? countries[countrySel] : "";
+        setDestinationCountry(countrySel);
+        setDestinationCities(citiesSel);
+        setDestinationCity("");
+    }
+    
+    // selecting destination city
+    function handleDestinationCitySelect(e) {
+        const citiesSel = e.target.value;
+        setDestinationCity(citiesSel);
+    }
     return (
         <div>
             <Form className='form-post' onSubmit ={handleSubmit}>
@@ -163,14 +163,11 @@ const countryList = Object.keys(countries).map(key => ({
                 <Button className='reset' variant="dark" onClick={handleSearchReset}>Reset</Button>
                 <Button className='search' variant="primary" type="submit">Search</Button>
                 </div>
-                
             </Form>
-            
             <div className='heading-carrier'>
             <span className='heading-filter'>Sort</span>
             </div>
            <div className='section-02'>
-           
             <div className='sort-by'>
                 <button className='sortSelection' onClick={handleRecentSort}>recent(default)</button>
                 <button className='sortSelection' onClick={handleWeightSort}>by weight</button>
@@ -179,7 +176,6 @@ const countryList = Object.keys(countries).map(key => ({
                 <button className='sortSelection' onClick={handleDestinationCitySort}>by destination city</button>
                 </div>
             </div>
-            
             <Card.Text className='heading-recently-sort-by'>Sorted By {sortBy}</Card.Text>
             <CardGroup>
                 {currentPostsSender.map((post) => { 
@@ -200,9 +196,7 @@ const countryList = Object.keys(countries).map(key => ({
                     </Card>
                     </div>
                 })}
-               
             </CardGroup>
-            
             {isChatting && <Chat socket={socket} setIsChatting={setIsChatting} postOwnerSocketId={postOwnerSocketId} />}
         </div>
     )
