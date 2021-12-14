@@ -37,7 +37,7 @@ const App = () => {
     .then(jsonData => {
       console.log(jsonData)})
     .catch(err => {
-      setError(err.message);
+      // setError(err.message);
       console.log(err)});
   }, [])
   return (
