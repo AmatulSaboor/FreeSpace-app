@@ -38,7 +38,7 @@ const App = () => {
       console.log(jsonData)})
     .catch(err => {
       // setError(err.message);
-      console.log(err)});
+    });
   }, [])
   return (
     <div className="App">
