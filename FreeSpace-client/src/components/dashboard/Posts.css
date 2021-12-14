@@ -1,3 +1,21 @@
+.mb-3 {
+    margin-bottom: 1rem!important;
+    font-size: 19PX;
+}
+
+button#uncontrolled-tab-example-tab-sender {
+    border: 1px solid!important;
+    color: #f0b302;
+}
+button#uncontrolled-tab-example-tab-carrier {
+    border: 1px solid!important;
+    color: #f0b302;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #fff!important;
+    background-color: #f0b302!important;
+    border-color: #fff#fff #fff!important;
+}
 span.filter-heading {
     float: left;
     padding-top: 20px;
@@ -7,10 +25,7 @@ span.filter-heading {
     color: #F0B032;
     
 }
-form.form-post {
-    margin-left: 200px;
-    /* margin-top: 20px; */
-}
+
 .colum-o1 {
     border: 2px solid #D3D3D3;
     border-radius: 2%;
@@ -21,10 +36,10 @@ form.form-post {
     border: 2px solid #D3D3D3;
     border-radius: 1%;
     margin-top: 8px;
-    max-width: 91%;
+   
     text-align: center;
     align-items: canter;
-    margin-left: 67px;
+   
 }
 .filter-mode {
     display: inline;
@@ -106,16 +121,13 @@ button.Search.btn.btn-primary{
     MARGIN-RIGHT: 2PX;
     MARGIN-LEFT: 5PX;
 }
-.section-02 {
-    margin-left: 200px;
-    margin-right: 100px;
-}
+
 .sort-by {
     margin: 2px;
     margin-top: 10px;
    
     padding-left: 1px;
-    margin-left: 92px;
+   
     margin-bottom: 15px;
     padding-bottom: 15px;
 }
@@ -125,8 +137,6 @@ span.sort-by-heading {
     font-size: 20px;
     font-weight: 400;
     float: left;
-    
-    margin-left: 220px
 }
 button.sortSelection {
     HEIGHT: 20PX;
@@ -139,7 +149,7 @@ p.heading-recently-sort-by.card-text {
     font-size: 16px;
     font-weight: 500;
     color: #f0b302;
-    margin-left: 220px;
+   
 }
 .heading-carrier {
     margin-top: 13px;
@@ -161,7 +171,6 @@ button.sortSelection {
 .card-group {
     display: flex;
     flex-flow: nowrap ;
-    margin-left: 220px;
     /* width: 20%; */
 }
 
@@ -229,4 +238,20 @@ button.livechat.btn.btn-secondary{ margin-top: 10px;
     input.select-form.form-control {
         width: 50%;
         display: inline;
+    }
+    .card-group {
+        margin-left: 8%;
+    }
+    .sebder-create-button {
+        margin-top: 2%;
+        /* float: right; */
+        margin-left: 65%;
+    }
+    .button.button-create.btn.btn-primary{
+    width: 33%;
+    }
+   
+    .Country {
+        display: -webkit-box;
+
     }

@@ -1,0 +1,19 @@
+
+  .sidebar {
+    
+    width: 20vw;
+    height:100vh;
+    
+    border: 2px solid #f0b302;
+    float: right;
+    padding-top: 2%;
+  }
+  img.user {
+    height: 46px;
+}
+li.user-name-field {
+  font-size: 12px;
+  margin-top: 2%;
+  border-bottom: 1px solid #f0b302;
+  margin-right: 2%;
+}

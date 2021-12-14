@@ -24,15 +24,17 @@ export const Menu = ({loggedInUserName, loggedInUserEmail}) => {
         <div className="menubar">
            <div className="free">
            <img className="logo" src={logo} alt="logoImage" />
+        
+           <Link className="linkto" to = "/sidebar"> <img className="icon-img" src={list} alt="listImage" /></Link>
            </div>
-           <div>User Name: {loggedInUserName} </div>
-           <div>Email: {loggedInUserEmail}</div>
+           {/* <div>User Name: {loggedInUserName} </div>
+           <div>Email: {loggedInUserEmail}</div> */}
            <div className="nav-link">
             <nav className="nav">
                 <ul>
-                    <li className="icon"><Link className="linkto" to = "/dashboard"> <img className="icon-img" src={home} alt="homeImage" /></Link></li>
+{/*                 
                     <li className="icon"><Link className="linkto" to = "/sender-listings"> <img className="icon-img" src={list} alt="listImage" /></Link></li>
-                    <li><button className='LOGOUT' onClick = {logout}>Log Out</button></li> 
+                    <li><button className='LOGOUT' onClick = {logout}>Log Out</button></li>  */}
                 </ul>
             </nav>
             </div>

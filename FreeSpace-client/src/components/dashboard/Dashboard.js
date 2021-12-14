@@ -6,10 +6,12 @@ import {CarrierPosts} from './CarrierPosts';
 import {SenderPosts} from './SenderPosts';
 import Pagination from '../pagination/Pagination';
 // import io from 'socket.io-client';
-import '../../assets/style.css'
+// import '../../assets/style.css'
 import '../dashboard/Dashboard.css'
 import '../menu/Menu'
 import serverURL from '../../configVars';
+import '../sideBar/SideBar'
+import Sidebar from 'react-sidebar';
 
 export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     
@@ -17,9 +19,9 @@ export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const [senderPosts, setSenderPosts] = useState([])
     const [spinner, setSpinner] = useState(true)
     const [currentPageSender, setCurrentPageSender] = useState(1);
-    const [senderPostsPerPage] = useState(2);
+    const [senderPostsPerPage] = useState(12);
     const [currentPageCarrier, setCurrentPageCarrier] = useState(1);
-    const [carrierPostsPerPage] = useState(2);
+    const [carrierPostsPerPage] = useState(4);
 
     // get sender current posts
     const indexOfLastSenderPost = currentPageSender * senderPostsPerPage;
@@ -58,32 +60,47 @@ export const Dashboard = ({setLoggedInUserEmail, setLoggedInUserName}) => {
         .then(res => res.json())
         .then(res => {setSenderPosts(res.senderPostList); setSpinner(false)})
         .catch(err => console.log(err))
-    }, [])
+    
+        
+    },
+    []
+    )
+    const handleCreate = (post) => {
+        console.log(`handle create`);
+        const copyPosts = [...CarrierPosts];
+        copyPosts.push(post);
+        setCarrierPosts(copyPosts)
+    }
     
     return (
-        <div>
+        <div className='dahboard'>
             {spinner && 
             <Spinner animation="border" role="status">
                 {/* <span classNameName="visually-hidden">Loading...</span> */}
             </Spinner>}
             
-            <Tabs className='senderAndCarrier' defaultActiveKey="carrier" id="uncontrolled-tab-example" className="mb-3">
-                
-                <Tab className="posts flex-column" eventKey="carrier" title="Carrier Posts">
+            <Tabs  defaultActiveKey="carrier" id="uncontrolled-tab-example" className="mb-3">
+             
+                <Tab id="hover-post" className="posts flex-column" eventKey="carrier" title="Carrier Posts">
                     <CarrierPosts currentPostsCarrier = {currentPostsCarrier} carrierPosts={carrierPosts} setCarrierPosts = {setCarrierPosts} />
                     <Pagination postsPerPage = {carrierPostsPerPage} totalPosts = {carrierPosts.length} paginate = {paginateCarrier} />
                 </Tab>
-                <Tab className="posts" eventKey="sender" title="Sender Posts">
+                <Tab id="hover-post" className="posts flex-column" eventKey="sender" title="Sender Posts">
                     <SenderPosts className='sender-dashboard' currentPostsSender = {currentPostsSender} senderPosts={senderPosts} setSenderPosts={setSenderPosts} />
                     <Pagination postsPerPage = {senderPostsPerPage} totalPosts = {senderPosts.length} paginate = {paginateSender} />
                 </Tab>
                 
                 
-            </Tabs>
+                
+                </Tabs>  
+           
+            
             
             <div className="divider">
         
     </div>
+    
+    
         </div>
         
         

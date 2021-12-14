@@ -9,8 +9,8 @@ import '../dashboard/Posts.css'
 export const CarrierPosts = ({socket, carrierPosts, currentPostsCarrier, setCarrierPosts}) => {
     console.log(currentPostsCarrier)
     const [weight, setWeight] = useState(0)
-    const [departureDate, setDepartureDate] = useState()
-    const [arrivalDate, setArrivalDate] = useState()
+    const [departureDate, setDepartureDate] = useState('')
+    const [arrivalDate, setArrivalDate] = useState('')
     const [departureCountry, setDepartureCountry] = useState('');
     const [departureCity, setDepartureCity] = useState('');
     const [arrivalCountry, setArrivalCountry] = useState('');
@@ -52,7 +52,7 @@ export const CarrierPosts = ({socket, carrierPosts, currentPostsCarrier, setCarr
     // handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(serverURL + "carrier/search",
+        fetch(serverURL + "auth/carrier/search",
         {
             mode: 'cors',
             method: 'POST',
@@ -106,12 +106,16 @@ const countryList = Object.keys(countries).map(key => ({
             <span className='heading-filter'>Filters</span>
             </div>
             <div className='colum-o1'>
-                
+                <div className='car-padding'>
                 
                 <div className='filter-column'>
                 <Form.Group className="filter-mode" controlId="byExpiresOn">
+                    <div>
                     <Form.Label>Depart After:</Form.Label>
+                    </div>
+                    <div>
                     <input className='input-form' value= {departureDate} type="date" name="departureDate" placeholder="select departure date" onChange={ e => setDepartureDate(e.target.value)}></input>
+                    </div>
                 </Form.Group>
                 <Form.Group className="filter-mode" controlId="byExpiresOn">
                     <Form.Label>Arrive Before:</Form.Label>
@@ -121,12 +125,13 @@ const countryList = Object.keys(countries).map(key => ({
                     <Form.Label>Weight:</Form.Label>
                     <input className='input-form' value={weight} type="number" min="0" placeholder="select weight" name="weight" onChange={e=>setWeight(e.target.value)}></input>
                 </Form.Group>
-                </div>
-                <div className='colum-2'>
-                    <div className='city-carrier'>
+                
+                
+                   
                 <Form.Group>
                    
                     <Form.Label className='cityandcountry'>Departure City</Form.Label>
+                    <div class="two-selection">
                     <select className='departure'
                         name="Countries"
                         onChange={e => handleDepartureCountrySelect(e)}
@@ -143,11 +148,13 @@ const countryList = Object.keys(countries).map(key => ({
                         <option  className='departure' value="" disabled>select departure city</option>
                         {departureCities.map((city, key) => (<option key={key} value={city}>{city}</option>))}
                     </select>
-                    
+                    </div> 
                 </Form.Group>
                 
                 <Form.Group className='arrival-post'>
+                
                     <Form.Label>Arrival City</Form.Label>
+                    <div class="two-selection">
                     <select className='departure'
                         name="Countries"
                         onChange={e => handleArrivalCountrySelect(e)}
@@ -164,16 +171,16 @@ const countryList = Object.keys(countries).map(key => ({
                         <option  className='departure' value="" disabled>select arrival city</option>
                         {arrivalCities.map((city, i) => (<option key={i} value={city}>{city}</option>))}
                     </select>
-                   
                     
+                 </div>   
                 </Form.Group>
-
-                </div>
-                </div>
+                </div> 
+                
+                
                 <Button className='reset' variant="dark" onClick={handleSearchReset}>Reset</Button>
                 <Button  className='Search'variant="primary"  type="submit">Search</Button>
                 </div>
-               
+                </div>
             
             </Form>
             <div className='heading-carrier'>

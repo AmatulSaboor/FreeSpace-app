@@ -8,8 +8,8 @@
   text-align: center;
  max-height:100%;
   max-width: 100%;
-  background-color: #FAFAFA;
-  background-image: url('../../../assets/img/background-image.png');
+  /* background-color: #FAFAFA; */
+  /* background-image: url('../../../assets/img/background-image.png'); */
   background-repeat: repeat;
   background-size: cover;
   
@@ -150,6 +150,8 @@ input.user-password {
     margin-top: 10px;
 
 }
+link{color: #000;
+  text-decoration: none;}
 .register {
   
     /* width: 35%; */
@@ -167,8 +169,8 @@ input.user-password {
     margin-left: 25px;
 }
 
-.register a :hover {
-  color: #000;
+a.register:hover  a:hover  link:hover {
+  color: #000 !important;
   border: 2px solid #F0B032;
   background: #fff;
   text-decoration: none
@@ -183,8 +185,28 @@ input.user-password {
   /* border-radius: 1000px; */
   font-size: 20px;
   width: 50%;
-  margin-left: 120px;
+ 
   margin-top: 20px;
+}
+.validationError.m-4 {
+  margin-left: 120px!important;
+}
+a.register {
+  color: #fff;
+}
+a.register:hover {
+  border: 2px solid #f0b032;
+  color: #000 !important;
+}
+a.register:focus {
+  border: 2px solid #f0b032;
+  color: #000 !important;
+}
+link{color: #000;
+text-decoration: none;}
+a:hover {
+  /* color: #0a58ca; */
+  color: #000;
 }
 
 

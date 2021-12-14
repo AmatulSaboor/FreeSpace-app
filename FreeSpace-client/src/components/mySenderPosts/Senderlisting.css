@@ -40,12 +40,7 @@ li.listing-name {
     align-items: center;
     margin-top: 20px;
 }; 
-.row {
-    float: left;
-    border-right: 1px solid #F0B032;
-    padding-right: 5%;
-    height: 64vh;
-}
+
 ul {
     list-style: none;
 }
@@ -138,12 +133,7 @@ li.listing-name {
     align-items: center;
     margin-top: 20px;
 }; 
-.row {
-    float: left;
-    border-right: 1px solid #F0B032;
-    padding-right: 5%;
-    height: 64vh;
-}
+
 ul {
     list-style: none;
 }
@@ -182,11 +172,7 @@ a {
 .card-group {
     padding-left: 20px;
 }
-.row {
-    padding-right: 2px;
-    border-right: 1px solid #F0B032;
-    height: 77vh;
-}
+
 .card-title.h5 {
     margin-top: 10px;
     font-size: 15px;
@@ -233,7 +219,7 @@ button.button-create.btn.btn-primary {
     /* padding: 20px; */
     margin-top: 170px;
     margin-left: -140px;
-    width: 12%;
+    width: 32%;
     height: 8vh;
 }
 .m-3.card {
@@ -258,8 +244,26 @@ button.button-create.btn.btn-primary {
     /* padding: 20px; */
     margin-top: 179px;
     margin-left: -140px;
-    width: 12%;
+    width: 32%;
     height: 8vh;
+}
+li.listing-name {
+    width: 100%;
+    height: 50px;
+    border-radius: 12%;
+    padding: 10px;
+    
+    padding: 14px 20px 10px 20px;
+    color: #000;
+    border: 1px solid #F0B032;
+    font-size: 15px;
+    box-shadow: 0 7px 14px rgb(0 0 0 / 16%);
+    justify-content: space-between;
+    font-weight: 300;
+    background: #FAFAFA;
+    margin-top: 20px;
+    align-items: center;
+    margin-top: -4px;
 }
 
 .card-body {
@@ -276,3 +280,7 @@ button.button-create.btn.btn-primary {
 font-weight: 500;}
 .answer-detail{font-size: 12px;
     font-weight: 400;}
+    nav.option-listing {
+        padding-top: 20px;
+        float: left;
+    }

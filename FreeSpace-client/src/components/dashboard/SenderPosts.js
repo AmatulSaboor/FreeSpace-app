@@ -7,7 +7,7 @@ import serverURL from '../../configVars';
 import '../dashboard/Posts.css'
 
 export const SenderPosts = ({socket, senderPosts, currentPostsSender, setSenderPosts}) => {
-    const [expiresOn, setExpiresOn] = useState()
+    const [expiresOn, setExpiresOn] = useState('')
     const [weight, setWeight] = useState(0)
     const [originCountry, setOriginCountry] = useState('');
     const [originCity, setOriginCity] = useState('');
@@ -114,6 +114,7 @@ const countryList = Object.keys(countries).map(key => ({
                     <div className='city-carrier'>
                 <Form.Group>
                     <Form.Label className='cityandcountry'>Origin City</Form.Label>
+                    <div class="two-selection">
                     <select className='departure'
                         name="Countries"
                         onChange={e => handleOriginCountrySelect(e)}
@@ -130,9 +131,11 @@ const countryList = Object.keys(countries).map(key => ({
                         <option value="" disabled>select origin city</option>
                         {originCities.map((city, key) => (<option key={key} value={city}>{city}</option>))}
                     </select>
+                    </div>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className='cityandcountry'>Destination City</Form.Label>
+                    <div class="two-selection">
                     <select className='departure'
                         name="Countries"
                         onChange={e => handleDestinationCountrySelect(e)}
@@ -149,13 +152,18 @@ const countryList = Object.keys(countries).map(key => ({
                         <option value="" disabled>select destination city</option>
                         {destinationCities.map((city, key) => (<option key={key} value={city}>{city}</option>))}
                     </select>
+                    </div>
                 </Form.Group>
                 </div>
                 </div>
                 
+                </div>
+                <br></br>
+                <div className='button-side'>
                 <Button className='reset' variant="dark" onClick={handleSearchReset}>Reset</Button>
                 <Button className='search' variant="primary" type="submit">Search</Button>
                 </div>
+                
             </Form>
             
             <div className='heading-carrier'>
@@ -179,7 +187,9 @@ const countryList = Object.keys(countries).map(key => ({
                         <Card.Body>
                         <Card.Title>Posted by <span className='date'>{post.createdBy}</span></Card.Title>
                         <Card.Text>
-                            <div><span className='italic'>{post.createdBy}</span> wants to send <span className='bold'><br></br>{post.weight}</span>kg(s) <br></br>stuff from <span className='bold'>{post.originCity}, {post.originCountry}</span><br></br> to <span className='bold'>{post.destinationCity}, {post.destinationCountry}</span><br></br> before <span className='italic'>{post.expiresOn.slice(0,10)}</span></div>
+                            <div>
+                                
+                                    <span className='italic'>{post.createdBy}</span> wants to send <span className='bold'><br></br>{post.weight}</span>kg(s) <br></br>stuff from <span className='bold'>{post.originCity}, {post.originCountry}</span><br></br> to <span className='bold'>{post.destinationCity}, {post.destinationCountry}</span><br></br> before <span className='italic'>{post.expiresOn.slice(0,10)}</span></div>
                         </Card.Text>
                         </Card.Body>
                         <Card.Footer>

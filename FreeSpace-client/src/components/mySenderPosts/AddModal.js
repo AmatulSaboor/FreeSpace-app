@@ -10,7 +10,7 @@ const handleShow = () => setShow(true);
 const handleClose = () => setShow(false);
 
 return (
-<div>
+ <div className='sebder-create-button'>
    <Button className="button-create" onClick={handleShow} data-toggle="modal"><span className="button-create">Create Sender Post</span></Button> 
    <Modal show={show} onHide={handleClose}>
       <Modal.Header>

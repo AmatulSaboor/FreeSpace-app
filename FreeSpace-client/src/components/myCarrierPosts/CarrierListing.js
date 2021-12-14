@@ -89,8 +89,6 @@ export const CarrierListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                             <div className="row">
                             <nav className='option-listing'>
                                         <ul>
-                                            <li className="listing-name"><Link className='link-carrier' to = "/sender-listings">My Sender Listings</Link> 
-                                            </li>
                                             <li className="listing-name">
                                                 My Carrier Listing
                                             </li>

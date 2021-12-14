@@ -12,3 +12,16 @@ button.livechat.btn.btn-primary {
     float: left;
     width: 90px;
 }
+.card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+ul.Navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 3%;
+}

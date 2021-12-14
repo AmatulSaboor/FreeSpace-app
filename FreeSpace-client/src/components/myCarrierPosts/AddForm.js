@@ -96,8 +96,9 @@ return (
       {validationError && <div className='validationError m-4'>{validationError}</div>}
       <Form.Group>
          <div>
-            <label>Departure Country: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure Country: <span className="mandatory"> *</span></label>
             <select
+             className="select-form"
             name="Countries"
             onChange={e => handleDepartureCountrySelect(e)}
             value={departureCountry}
@@ -108,8 +109,9 @@ return (
          </select>
          </div>
          <div>
-            <label>Departure City: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure City: <span className="mandatory"> *</span></label>
          <select
+          className="select-form"
             name="Cities"
             onChange={e => handleDepartureCitySelect(e)}
             value={departureCity}
@@ -122,8 +124,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Arrival Country: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival Country: <span className="mandatory"> *</span></label>
             <select
+             className="select-form"
             name="Countries"
             onChange={e => handleArrivalCountrySelect(e)}
             value={arrivalCountry}
@@ -134,8 +137,9 @@ return (
          </select>
          <div>
          </div>
-            <label>Arrival City: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival City: <span className="mandatory"> *</span></label>
             <select
+             className="select-form"
                name="Cities"
                onChange={e => handleArrivalCitySelect(e)}
                value={arrivalCity}
@@ -148,8 +152,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Departure Date: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure Date: <span className="mandatory"> *</span></label>
             <Form.Control
+             className="select-form"
                type="date"
                placeholder="departure date"
                name="departure date"
@@ -160,8 +165,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Arrival Date: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival Date: <span className="mandatory"> *</span></label>
             <Form.Control
+             className="select-form"
                type="date"
                placeholder="arrival date"
                name="arrival date"
@@ -172,8 +178,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Weight: <span className="mandatory"> *</span></label>
+            <label className="form-label">Weight: <span className="mandatory"> *</span></label>
             <Form.Control
+             className="select-form"
                type="number"
                placeholder="weight"
                name="weight"
@@ -186,10 +193,11 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Volume: <span className="mandatory"> *</span></label>
+            <label className="form-label">Volume: <span className="mandatory"> *</span></label>
             <Form.Control
+             className="select-form"
                type="text"
-               placeholder="volume"
+               placeholder="volume (For e.g: 6*8)"
                name="vloume"
                onChange = { (e) => setVolume(e.target.value)}
             />
@@ -197,19 +205,22 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Rates (per kg)<span className="mandatory"> *</span>: </label>
+            <label className="form-label">Rates (per kg)<span className="mandatory"> *</span>: </label>
             <Form.Control
+             className="select-form"
                type="text"
                placeholder="estimated rates per kg"
                name="ratePerKg"
                onChange = { (e) => setRatesPerKg(e.target.value)}
+               min= "0"
             />
          </div>
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Comments: </label>
+            <label className="form-label">Comments: </label>
             <Form.Control
+             className="select-form"
                as="textarea"
                placeholder="any comments....."
                rows={3}

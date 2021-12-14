@@ -91,8 +91,7 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                                             <li className="listing-name">
                                                 My Sender Listing
                                             </li>
-                                            <li className="listing-name"><Link className='link-carrier' to = "/carrier-listings">My Carrier Listings</Link>
-                                            </li>
+                                          
                                         </ul>
                                     </nav>
                                 </div>
@@ -106,34 +105,68 @@ export const SenderListing = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                                     <Card.Title className='date'>Posted On <span className='date'> {post.createdAt.slice(0,10)}</span></Card.Title>
                                     <Card.Text>
                                         <div className="Country">
-                                            <span className="country">Origin Country: </span><span className='answer-detail'>{post.originCountry}</span>
+                                            <div className='abc'>
+                                            <span className="country">Origin Country: </span>
+                                            </div>
+                                            <div className='select-form02'>
+                                            <span className='answer-detail'>{post.originCountry}</span>
+                                            </div>
                                             </div>
                                             <div className="Country">
-                                            <span className="country">Destination Country: </span><span className='answer-detail'>{post.destinationCountry}</span>
+                                            <div className='abc'>
+                                            <span className="country">Destination Country: </span>
+                                            </div>
+                                            <div className='select-form02'>
+                                            <span className='answer-detail'>{post.destinationCountry}</span>
+                                            </div>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Origin City: </span><span className='answer-detail'>{post.originCity}</span>
+                                        <div className='abc'>
+                                            <span className="country">Origin City: </span>
+                                            </div>
+                                            <div className='select-form02'>
+                                            <span className='answer-detail'>{post.originCity}</span>
+                                            </div>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Destination City: </span><span className='answer-detail'>{post.destinationCity}</span>
+                                        <div className='abc'>
+                                            <span className="country">Destination City: </span>
+                                            </div> 
+                                            <div className='select-form02'>
+                                            <span className='answer-detail'>{post.destinationCity}</span>
+                                            </div>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Expires On: </span><span className='answer-detail'>{post.expiresOn.slice(0,10)}</span>
+                                        <div className='abc'>
+                                            <span className="country">Expires On: </span>
+                                            </div><span className='answer-detail'>{post.expiresOn.slice(0,10)}</span>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Weight: </span><span className='answer-detail'>{post.weight}</span>
+                                        <div className='abc'>
+                                            <span className="country">Weight: </span>
+                                            </div><span className='answer-detail'>{post.weight}</span>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Volume: </span><span className='answer-detail'>{post.volume}</span>
+                                        <div className='abc'>
+                                            <span className="country">Volume: </span>
+                                            </div>
+                                            <span className='answer-detail'>{post.volume}</span>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Items: </span><span className='answer-detail'>{post.items}</span>
+                                        <div className='abc'>
+                                            <span className="country">Items: </span>
+                                            </div><span className='answer-detail'>{post.items}</span>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Willing To Pay (per kg): </span><span className='answer-detail'>{post.willingToPayPerKg}</span>
+                                        <div className='abc'>
+                                            <span className="country">Willing To Pay (per kg): </span>
+                                                </div><span className='answer-detail'>{post.willingToPayPerKg}</span>
                                         </div>
                                         <div className="Country">
-                                            <span className="country">Notes: </span><span className='answer-detail'>{post.comments}</span>
+                                        <div className='abc'>
+                                            <span className="country">Notes: </span>
+                                            </div>
+                                            <span className='answer-detail'>{post.comments}</span>
                                         </div>
                                     </Card.Text>
                                     </Card.Body>

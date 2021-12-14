@@ -1,5 +1,5 @@
 import { Form, Button } from "react-bootstrap";
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import serverURL from "../../configVars";
 import countries from '../../data/listOfCountriesAndCities.json';
 import '../mySenderPosts/EditSender.css'
@@ -19,11 +19,17 @@ const [items, setItems] = useState(post.items);
 const [comments, setComments] = useState(post.comments);
 const [originCities, setOriginCities] = useState([]);
 const [destinationCities, setDestinationCities] = useState([])
+const [validationError, setValidationError] = useState(null)
 
 // abstracting individual countries
 const countryList = Object.keys(countries).map(key => ({
    name: key
 }));
+
+useEffect(()=> {
+   setOriginCities(countries[post.originCountry]);
+   setDestinationCities(countries[post.destinationCountry]);
+}, [post.originCountry, post.destinationCountry])
 
 // shows origin cities dropdown wrt country
 function handleOriginCountrySelect(e) {
@@ -58,6 +64,24 @@ function handleDestinationCitySelect(e) {
 // fetching data on submit
 const handleSubmit = (e) => {
    e.preventDefault();
+   if(weight <= 0) {
+      setValidationError(`Weight can't be less than or equal to zero kg`)
+      return;
+   }
+   if(willingToPayPerKg <= 0) {
+      setValidationError(`Willing to pay per kg can't be set less than or equal to zero kg`)
+      return;
+   }
+   if(weight > 30) {
+      setValidationError(`Weight can't be greater than 30kgs`)
+      return;
+   }
+   const today = new Date();
+   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+   if (expiresOn < date) {
+      setValidationError(`Expires on can't be before the current date`)
+      return;
+   }
    fetch(serverURL + "sender/update",
    {
    mode: 'cors',
@@ -78,6 +102,7 @@ const handleSubmit = (e) => {
 
 return (
    <Form className="editsender" onSubmit={handleSubmit}>
+   {validationError && <div className='validationError m-4'>{validationError}</div>}
    <Form.Group>
       <div className='form-dix-option'>
          <label className="form-label">Origin Country: <span className="mandatory"> *</span></label>
@@ -141,7 +166,7 @@ return (
             type="date"
             placeholder="expires on date *"
             name="expiresOn"
-            value={expiresOn}
+            value={new Date(expiresOn).toISOString().slice(0,10)}
             onChange = { (e) => setExpiresOn(e.target.value)}
             required
          />
@@ -158,6 +183,8 @@ return (
             value={weight}
             onChange = { (e) => setWeight(e.target.value)}
             required
+            min="0"
+            max="30"
          />
       </div>
    </Form.Group>
@@ -167,7 +194,7 @@ return (
          <Form.Control
          className="select-form"
             type="text"
-            placeholder="volume *"
+            placeholder="volume (For e.g: 6*8) *"
             name="vloume"
             value={volume}
             onChange = { (e) => setVolume(e.target.value)}
@@ -184,6 +211,7 @@ return (
             name="willingToPayPerKg"
             value={willingToPayPerKg}
             onChange = { (e) => setWillingToPayPerKg(e.target.value)}
+            min="0"
          />
       </div>
    </Form.Group>

@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import { Modal, Button, Card } from 'react-bootstrap'
-// import serverURL from '../../configVars';
+import serverURL from '../../configVars';
+import {useHistory} from "react-router-dom";
 // import Chat from '../chat/Chat';
 // const serverURL = 'https://freespace-server.herokuapp.com/';
 // const serverURL = 'http://localhost:9000/';
@@ -8,6 +9,7 @@ import { Modal, Button, Card } from 'react-bootstrap'
 // export default function DetailModal({socket, post}) {
 export default function DetailModal({post, setIsChatting, postOwnerSocketId, setPostOwnerSocketId}) {
     const [show, setShow] = useState(false);
+    const history = useHistory();
     // const [postOwnerSocketId, setPostOwnerSocketId] = useState()
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -17,7 +19,7 @@ export default function DetailModal({post, setIsChatting, postOwnerSocketId, set
 
     }
     // useEffect(()=>{
-    //     fetch(serverURL + `auth/checkOnline/${post.createdBy}`).then(res => res.json())
+    //     fetch(serverURL + `checkOnline/${post.createdBy}`).then(res => res.json())
     //     .then(res => {
     //         console.log(res)
     //     if(res.isOnline){
@@ -59,7 +61,25 @@ export default function DetailModal({post, setIsChatting, postOwnerSocketId, set
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className='livechat' onClick={handleLiveChat}>Live Chat</Button>
+                    <Button className='livechat' onClick={
+                        () => {
+                            fetch(serverURL + `notification/create/`,
+                            {
+                                mode: 'cors',
+                                method: 'POST',
+                                headers: { 'Content-Type':'application/json' },
+                                body: JSON.stringify({postId:post._id, recieverName:post.createdBy}),
+                                credentials: 'include'
+                            })
+                            .then( response => response.json())
+                            .then (response => {
+                                    console.log(response);
+                                    handleClose()
+                                    history.push('./dashboard')
+                            })
+                            .catch(err => console.log(err));
+                        }
+                    }>Interested</Button>
                     <Button className='close' onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>

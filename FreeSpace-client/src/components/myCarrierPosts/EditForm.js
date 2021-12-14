@@ -1,5 +1,5 @@
 import { Form, Button } from "react-bootstrap";
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import serverURL from "../../configVars";
 import countries from '../../data/listOfCountriesAndCities.json';
 
@@ -18,10 +18,16 @@ const EditForm = ({post, handleClose, handleEdit}) => {
     const [comments, setComments] = useState(post.comments);
     const [departureCities, setDepartureCities] = useState([]);
     const [arrivalCities, setArrivalCities] = useState([])
+    const [validationError, setValidationError] = useState(null)
 // abstracting individual countries
 const countryList = Object.keys(countries).map(key => ({
    name: key
 }));
+
+useEffect(()=> {
+   setDepartureCities(countries[post.departureCountry]);
+   setArrivalCities(countries[post.arrivalCountry]);
+}, [post.departureCountry, post.arrivalCountry])
 
 // shows origin cities dropdown wrt country
 function handleDepartureCountrySelect(e) {
@@ -56,6 +62,24 @@ function handleArrivalCitySelect(e) {
 // fetching data on submit
 const handleSubmit = (e) => {
    e.preventDefault();
+   if (departureDate > arrivalDate){
+      setValidationError(`Departure date can't be eariler than arrival date`)
+      return;
+   }
+   const today = new Date();
+   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+   if (departureDate < date) {
+      setValidationError(`Departure date can't be before the current date`)
+      return;
+   }
+   if(weight <= 0) {
+      setValidationError(`Weight can't be less than or equal to zero kg`)
+      return;
+   }
+   if(weight > 30) {
+      setValidationError(`Weight can't be greater than 30kgs`)
+      return;
+   }
    fetch(serverURL + "carrier/update",
    {
    mode: 'cors',
@@ -76,10 +100,12 @@ const handleSubmit = (e) => {
 
 return (
    <Form onSubmit={handleSubmit}>
+      {validationError && <div className='validationError m-4'>{validationError}</div>}
       <Form.Group>
          <div>
-            <label>Departure Country: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure Country: <span className="mandatory"> *</span></label>
             <select
+            className="select-form"
                name="Countries"
                onChange={e => handleDepartureCountrySelect(e)}
                value={departureCountry}
@@ -90,8 +116,9 @@ return (
             </select>
          </div>
          <div>
-            <label>Departure City: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure City: <span className="mandatory"> *</span></label>
             <select
+            className="select-form"
                name="Cities"
                onChange={e => handleDepartureCitySelect(e)}
                value={departureCity}
@@ -104,8 +131,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Arrival Country: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival Country: <span className="mandatory"> *</span></label>
             <select
+            className="select-form"
                name="Countries"
                onChange={e => handleArrivalCountrySelect(e)}
                value={arrivalCountry}
@@ -116,8 +144,9 @@ return (
             </select>
          </div>
          <div>
-            <label>Arrival City: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival City: <span className="mandatory"> *</span></label>
             <select
+            className="select-form"
                   name="Cities"
                   onChange={e => handleArrivalCitySelect(e)}
                   value={arrivalCity}
@@ -130,12 +159,13 @@ return (
       </Form.Group>
       <Form.Group>
       <div>
-            <label>Departure Date: <span className="mandatory"> *</span></label>
+            <label className="form-label">Departure Date: <span className="mandatory"> *</span></label>
             <Form.Control
+            className="select-form"
                type="date"
                placeholder="departure date"
                name="departure"
-               value={departureDate}
+               value={new Date(departureDate).toISOString().slice(0,10)}
                onChange = { (e) => setDepartureDate(e.target.value)}
                required
             />
@@ -143,12 +173,13 @@ return (
       </Form.Group>
       <Form.Group>
       <div>
-            <label>Arrival Date: <span className="mandatory"> *</span></label>
+            <label className="form-label">Arrival Date: <span className="mandatory"> *</span></label>
             <Form.Control
+            className="select-form"
                type="date"
                placeholder="arrival date"
                name="arrival"
-               value={arrivalDate}
+               value={new Date(arrivalDate).toISOString().slice(0,10)}
                onChange = { (e) => setArrivalDate(e.target.value)}
                required
             />
@@ -156,21 +187,25 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Weight: <span className="mandatory"> *</span></label>
+            <label className="form-label">Weight: <span className="mandatory"> *</span></label>
             <Form.Control
+            className="select-form"
                type="number"
                placeholder="weight"
                name="weight"
                value={weight}
                onChange = { (e) => setWeight(e.target.value)}
                required
+               min="0"
+               max="30"
             />
          </div>
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Volume: <span className="mandatory"> *</span></label>
+            <label className="form-label">Volume: <span className="mandatory"> *</span></label>
             <Form.Control
+            className="select-form"
                type="text"
                placeholder="volume"
                name="vloume"
@@ -181,8 +216,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Rates Per Kg: </label>
+            <label className="form-label">Rates Per Kg: </label>
             <Form.Control
+            className="select-form"
                type="text"
                placeholder="estimated rates per kg"
                name="ratesPerKg"
@@ -193,8 +229,9 @@ return (
       </Form.Group>
       <Form.Group>
          <div>
-            <label>Comments: </label>
+            <label className="form-label">Comments: </label>
             <Form.Control
+            className="select-form"
                as="textarea"
                placeholder="any comments...."
                rows={3}
