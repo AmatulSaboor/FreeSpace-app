@@ -8,11 +8,9 @@ export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
     const history = useHistory();
     const [notificationsList, setNotificationsList] = useState([])
     const handleDelete = (id) => {
-        console.log(`handle delete`);
         setNotificationsList(notificationsList.filter(i => i._id !== id));
     }
     const handleEdit = (notification) => {
-        console.log(`handle edit`);
 
         setNotificationsList(notificationsList.filter( item => {
             if (item._id === notification._id){

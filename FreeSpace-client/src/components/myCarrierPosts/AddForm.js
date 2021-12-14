@@ -74,7 +74,6 @@ const AddForm = ({handleClose, handleCreate}) => {
          setValidationError(`Weight can't be greater than 30kgs`)
          return;
       }
-      console.log(departureDate);
       fetch(serverURL + "carrier/create",
       {
          mode: 'cors',
