@@ -52,12 +52,14 @@ export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                         <Card.Body>
                         <Card.Title><span className='date bold'>{notification.senderName}</span> is interested in contacting you. Please contact him/her through provided phone number or email address for further procedure.</Card.Title>
                         <Card.Text>
-                            <span className='date'>Email: {notification.senderEmail}</span>
-                            <span className='date'>Phone Number: {notification.senderPhone}</span>
+                            <span className='date'>Email: </span><span>{notification.senderEmail}  </span>
+                            <span className='date'>Phone Number: </span><span>{notification.senderPhone}</span>
+                        </Card.Text>
+                        <Card.Text>
+                            <span className="text-muted">Notification sent on {notification.createdAt.slice(0,10)}</span>
                         </Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            <span className="text-muted">Posted On {notification.createdAt.slice(0,10)}</span>
                             {!notification.isRead && <Button onClick={
                                 () => {
                                     fetch(serverURL + `notification/markRead/`,
