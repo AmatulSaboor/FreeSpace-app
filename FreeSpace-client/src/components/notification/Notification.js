@@ -53,9 +53,9 @@ export const Notification = ({setLoggedInUserEmail, setLoggedInUserName}) => {
                         <Card.Title>Posted by <span className='date'>{notification.senderName}</span></Card.Title>
                         {notification.isRead && <Card.Title>Read <span className='date'></span></Card.Title>}
                         {!notification.isRead && <Card.Title>Mark isRead <span className='date'></span></Card.Title>}
-                        {/* <Card.Text>
+                        <Card.Text>
                             <div><span className='italic'>{post.createdBy}</span> wants to send <span className='bold'><br></br>{post.weight}</span>kg(s) <br></br>stuff from <span className='bold'>{post.originCity}, {post.originCountry}</span><br></br> to <span className='bold'>{post.destinationCity}, {post.destinationCountry}</span><br></br> before <span className='italic'>{post.expiresOn.slice(0,10)}</span></div>
-                        </Card.Text> */}
+                        </Card.Text>
                         </Card.Body>
                         <Card.Footer>
                             <span className="text-muted">Posted On {notification.createdAt.slice(0,10)}</span>

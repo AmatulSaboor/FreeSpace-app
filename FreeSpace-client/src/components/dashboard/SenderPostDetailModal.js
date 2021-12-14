@@ -20,25 +20,26 @@ export default function DetailModal({post}) {
                 </Modal.Header>
                 <Modal.Body className='detail-post-body'>
                     <div>
-                        <span className='detail-post-deputure'>Origin City: </span><span className='detail-post-answer'>{post.originCity}</span><span className='detail-post-deputure'>Destination City: </span><span className='detail-post-answer'>{post.destinationCity}</span>
+                        <span className='detail-post-deputure bold'>Origin City: </span><span className='detail-post-answer'>{post.originCity}</span><span className='detail-post-deputure bold'>Destination City: </span><span className='detail-post-answer'>{post.destinationCity}</span>
                     </div>
                     <div>
-                        <span className='detail-post-deputure'>Expires On: </span><span className='detail-post-answer'>{post.expiresOn.slice(0,10)}</span>
+                        <span className='detail-post-deputure bold'>Expires On: </span><span className='detail-post-answer'>{post.expiresOn.slice(0,10)}</span>
                     </div>
                     <div>
-                        <span className='detail-post-deputure'>Weight: </span><span className='detail-post-answer'>{post.weight} kg(s)</span><span className='detail-post-deputure'>Volume: </span><span className='detail-post-answer'>{post.volume}</span>
+                        <span className='detail-post-deputure bold'>Weight: </span><span className='detail-post-answer'>{post.weight} kg(s)</span><span className='detail-post-deputure bold'>Volume: </span><span className='detail-post-answer'>{post.volume}</span>
                     </div>
                     <div>
-                        <span className='detail-post-deputure'>Items: </span><span className='detail-post-answer'>{post.items}</span>
+                        <span className='detail-post-deputure bold'>Items: </span><span className='detail-post-answer'>{post.items}</span>
                     </div>
                     <div>
-                        <span className='detail-post-deputure'>Willing To Pay (per kg): </span><span className='detail-post-answer'>{post.willingToPayPerKg}</span>
+                        <span className='detail-post-deputure bold'>Willing To Pay (per kg): </span><span className='detail-post-answer'>{post.willingToPayPerKg}</span>
                     </div>
                     <div>
-                        <span className='detail-post-deputure'>Notes: </span><span className='detail-post-answer'>{post.comments}</span>
+                        <span className='detail-post-deputure bold'>Notes: </span><span className='detail-post-answer'>{post.comments}</span>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                    <Card.Text>If you click INTERESTED button, a notification will be sent to the post owner with your email and phone numberthen you will be contacted soon, </Card.Text>
                     <Button className='livechat' onClick={
                         () => {
                             fetch(serverURL + `notification/create/`,
@@ -58,7 +59,6 @@ export default function DetailModal({post}) {
                             .catch(err => console.log(err));
                         }
                     }>Interested</Button>
-                    <Card.Text>If you click INTERESTED button, a notification will be sent to the post owner with your email and phone number</Card.Text>
                     <Button className='close' onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
